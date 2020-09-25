@@ -11,7 +11,7 @@ Additionally, I also used this opportunity to further cement my understanding of
 ## Features
 
 <img src="./public/images/complex-maze.gif">
-<img src="./public/images/wall-maze.gif">
+<img src="./public/images/walls-maze.gif">
 <img src="./public/images/drag-maze.gif">
 
 ## Roadmap
