@@ -1,0 +1,23 @@
+.error-container {
+  height: 5em;
+  overflow: auto;
+  font-family: "helvetica";
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.error-message {
+  font-size: 1.2em;
+
+  font-weight: bold;
+  color: rgb(49, 52, 68);
+  margin-bottom: 0.1em;
+}
+
+.error-hint {
+  font-size: 1em;
+  font-style: italic;
+}

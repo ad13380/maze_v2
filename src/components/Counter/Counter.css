@@ -1,0 +1,32 @@
+.outer-container {
+  height: 5em;
+  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inner-container {
+  font-family: "helvetica";
+  line-height: normal;
+  font-size: 1.2em;
+  display: flex;
+  width: 14vw;
+  min-width: 12em;
+}
+
+.counter-numbers {
+  text-align: left;
+  font-weight: bold;
+  margin-left: 0.5em;
+  color: rgb(49, 52, 68);
+}
+
+.counter-title {
+  text-align: left;
+}
+
+@font-face {
+  font-family: "Circular";
+  src: url("../../assets/fonts/CircularStd-Bold.otf");
+}

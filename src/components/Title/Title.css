@@ -1,0 +1,13 @@
+.title-container {
+  font-family: "Circular";
+  color: rgb(49, 52, 68);
+  font-size: 4.5em;
+  letter-spacing: 0.01px;
+  overflow: auto;
+  padding: 0.2em 0 0 0;
+}
+
+@font-face {
+  font-family: "Circular";
+  src: url("../../assets/fonts/CircularStd-Bold.otf");
+}
