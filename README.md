@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./public/images/title.png"> 
+<img src="./public/images/title.png" width="500px"> 
 <br><br>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f6432fa9-2248-413e-8242-bf1794ab3e65/deploy-status)](https://app.netlify.com/sites/maze-pathfinder/deploys)
