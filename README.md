@@ -4,41 +4,17 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f6432fa9-2248-413e-8242-bf1794ab3e65/deploy-status)](https://app.netlify.com/sites/maze-pathfinder/deploys)
 
-[Setup](#setup) | [Features](#features) | [Roadmap](#roadmap)
+[Features](#features) | [Setup](#setup) | [Roadmap](#roadmap)
 
 </div>
+
+This app has been deployed on Netlify, you can view it [here](https://maze-pathfinder.netlify.app/) (this app works best on Google Chrome).
 
 A personal project, the goal of which was to create a front-end application that would allow users to draw a maze on the screen, drag-and-drop the start and finish points, and then run a pathfinding algorithm to visually see how it methodically searches through the maze and determines the shortest path from start to finish (if one exists).
 
 My motivation for creating this project was firstly to aid in my understanding of pathfinding algorithms. Though I was able to grasp it conceptually, I also like to see how concepts can be applied practically. Given their popularity in route planning for navigation apps, I decided a pathfinding feature within a maze drawing app would be a suitable application. This program uses _Dijkstra's algorithm_ to solve the maze. Future iterations will also include _A\*_ and _Greedy Breadth First Search_ algorithms.
 
 Additionally, I also used this opportunity to further cement my understanding of React; in particular the use of animations and asynchronous operations. Though I did find this aspect particularly challenging to write, I find the best way to learn a new concept is to take my existing knowledge and push the boundaries of what I can create with it. After writing my millionth "React Counter App", I figured it was time to create something a little less conventional.
-
-## Setup
-
-This app has been deployed on Netlify, you can view it [here](https://maze-pathfinder.netlify.app/) (this app works best on Google Chrome).
-
-If you would like to run this locally you can clone this repo and install Node.js.
-
-After navigating into the directory, you can install the dependencies by running:
-
-```
-$ npm install
-```
-
-To starat application, run:
-
-```
-$ npm start
-```
-
-To run tests, run:
-
-```
-$ npm test
-```
-
-the application will be live on https://localhost:3000 by default.
 
 ## Features
 
@@ -134,6 +110,30 @@ I would like the notice message to provide some helpful hints on how to fix my m
 > If a User creates a maze that is unsolvable (that is, there is no clear path between the start and finish nodes) a notice is displayed with a helpful hint for how the User can correct their maze
 
 <img src="./public/images/unsolvable-maze.gif">
+
+## Setup
+
+If you would like to run this locally you can clone this repo and install Node.js.
+
+After navigating into the directory, you can install the dependencies by running:
+
+```
+$ npm install
+```
+
+To starat application, run:
+
+```
+$ npm start
+```
+
+To run tests, run:
+
+```
+$ npm test
+```
+
+the application will be live on https://localhost:3000 by default.
 
 ## Roadmap
 
