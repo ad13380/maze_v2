@@ -1,6 +1,12 @@
-# Maze Pathfinder
+<div align="center">
+<img src="./public/images/title.png"> 
+<br><br>
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f6432fa9-2248-413e-8242-bf1794ab3e65/deploy-status)](https://app.netlify.com/sites/maze-pathfinder/deploys)
+
+[Setup](#setup) | [Features](#features) | [Roadmap](#roadmap)
+
+</div>
 
 A personal project, the goal of which was to create a front-end application that would allow users to draw a maze on the screen, drag-and-drop the start and finish points, and then run a pathfinding algorithm to visually see how it methodically searches through the maze and determines the shortest path from start to finish (if one exists).
 
