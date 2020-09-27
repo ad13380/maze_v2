@@ -22,7 +22,7 @@ describe("<Counter />", () => {
     expect(text).toEqual("Visited Nodes: Shortest Path Nodes:");
   });
 
-  it("has an initial count of 0", () => {
+  it("has initial total visited nodes and shortest path count of 0", () => {
     const wrapper = shallow(<Counter {...initalProps} />);
     const text = wrapper.find(".counter-numbers").text();
     expect(text).toEqual("0 0");
