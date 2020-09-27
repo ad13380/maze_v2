@@ -1,0 +1,11 @@
+langauge: node_js
+
+node_js:
+  - 14.4.0
+
+install:
+  - npm install
+
+script:
+  - npm test
+  - npm test -- --coverage
