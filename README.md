@@ -2,7 +2,7 @@
 <img src="./public/images/title.png" width="500px"> 
 <br><br>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/f6432fa9-2248-413e-8242-bf1794ab3e65/deploy-status)](https://app.netlify.com/sites/maze-pathfinder/deploys) [![Build Status](https://travis-ci.org/ad13380/maze_v2.svg?branch=master)](https://travis-ci.org/ad13380/maze_v2)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f6432fa9-2248-413e-8242-bf1794ab3e65/deploy-status)](https://app.netlify.com/sites/maze-pathfinder/deploys) [![Build Status](https://travis-ci.org/ad13380/maze_v2.svg?branch=master)](https://travis-ci.org/ad13380/maze_v2) [![Maintainability](https://api.codeclimate.com/v1/badges/b6340574dba83461f981/maintainability)](https://codeclimate.com/github/ad13380/maze_v2/maintainability)
 
 [Features](#features) | [Setup](#setup) | [Roadmap](#roadmap)
 
