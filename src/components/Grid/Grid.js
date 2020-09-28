@@ -4,7 +4,7 @@ import "./Grid.css";
 
 const Grid = (props) => {
   return (
-    <div className="grid">
+    <div className="grid" data-test="grid-component">
       {props.grid.map((row, rowIndex) => {
         return (
           <div key={rowIndex}>
@@ -22,6 +22,7 @@ const Grid = (props) => {
                   handleMouseEnter={props.handleMouseEnter}
                   handleMouseUp={props.handleMouseUp}
                   nodeDrag={nodeDrag}
+                  data-test="node-component"
                 />
               );
             })}

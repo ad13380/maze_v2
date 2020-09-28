@@ -5,11 +5,11 @@ import Error from "../components/Error/Error";
 import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
 import { dijkstra, shortestPath } from "../models/algorithms/dijkstra";
-import { useInitialGrid } from "../hooks/useInitialGrid";
-import { useNewStartFinish } from "../hooks/useNewStartFinish";
-import { useClearVisitedNodes } from "../hooks/useClearVisitedNodes";
-import { useSetWallNode } from "../hooks/useSetWallNode";
-import { useSetDragNode } from "../hooks/useSetDragNode";
+import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
+import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
+import { useClearVisitedNodes } from "../hooks/useClearVisitedNodes/useClearVisitedNodes";
+import { useSetWallNode } from "../hooks/useSetWallNode/useSetWallNode";
+import { useSetDragNode } from "../hooks/useSetDragNode/useSetDragNode";
 var _ = require("lodash");
 
 const GRID_ROWS = 20;
