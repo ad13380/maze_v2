@@ -132,7 +132,7 @@ After navigating into the directory, you can install the dependencies by running
 $ npm install
 ```
 
-To starat application, run:
+To start application, run:
 
 ```
 $ npm start
