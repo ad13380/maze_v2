@@ -1,5 +1,8 @@
 import { useNewStartFinish } from "./useNewStartFinish";
 
 describe("useNewStartFinish", () => {
-  // let grid =
+  // placeholder
+  it("placeholder", () => {
+    expect(true).toBeTruthy();
+  });
 });
