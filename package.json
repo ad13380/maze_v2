@@ -40,6 +40,7 @@
     "coveragePathIgnorePatterns": [
       "src/index.js",
       "src/serviceWorker.js",
+      "src/testHelpers.js",
       "src/reducers/nodeClassReducer.js"
     ]
   }

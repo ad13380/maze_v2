@@ -4,12 +4,15 @@ describe("useClearVisitedNodes", () => {
   let grid;
   let updatedGrid;
   const [getClearVisitedNodes] = useClearVisitedNodes();
+
+  // selects the diagonal nodes
   const visitedNodes = [
     { row: 0, col: 0 },
     { row: 1, col: 1 },
     { row: 2, col: 2 },
   ];
 
+  // generates a 3x3 grid
   const generateGrid = (nodeType) => {
     return new Array(3).fill("").map(() =>
       new Array(3).fill("").map(() => ({
