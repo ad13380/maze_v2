@@ -4,7 +4,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/f6432fa9-2248-413e-8242-bf1794ab3e65/deploy-status)](https://app.netlify.com/sites/maze-pathfinder/deploys) [![Build Status](https://travis-ci.org/ad13380/maze_v2.svg?branch=master)](https://travis-ci.org/ad13380/maze_v2) [![Maintainability](https://api.codeclimate.com/v1/badges/b6340574dba83461f981/maintainability)](https://codeclimate.com/github/ad13380/maze_v2/maintainability)
 
-[Features](#features) | [Setup](#setup) | [Roadmap](#roadmap)
+[Features](#features) | [Technologies](#technologies) | [Setup](#setup) | [Roadmap](#roadmap)
 
 </div>
 
@@ -111,6 +111,17 @@ I would like the notice message to provide some helpful hints on how to fix my m
 
 <img src="./public/images/unsolvable-maze.gif">
 
+## Technologies
+
+| Area                 | Technology              |
+| -------------------- | ----------------------- |
+| Libraries            | React                   |
+| Languages            | Javascript, HTML5, CSS3 |
+| Styling              | CSS, Bootstrap          |
+| CI/CD                | Travis                  |
+| Hosting              | Netflify                |
+| Testing and Coverage | Jest, Enzyme            |
+
 ## Setup
 
 If you would like to run this locally you can clone this repo and install Node.js.
@@ -121,7 +132,7 @@ After navigating into the directory, you can install the dependencies by running
 $ npm install
 ```
 
-To starat application, run:
+To start application, run:
 
 ```
 $ npm start
