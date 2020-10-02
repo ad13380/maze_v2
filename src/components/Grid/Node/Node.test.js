@@ -6,6 +6,9 @@ describe("<Node />", () => {
   let wrapper;
   let nodeComponent;
   let nodeProps;
+  const mouseDownMock = jest.fn();
+  const mouseEnterMock = jest.fn();
+  const mouseUpMock = jest.fn();
 
   beforeEach(() => {
     nodeProps = {
@@ -15,13 +18,40 @@ describe("<Node />", () => {
       isStart: false,
       isFinish: false,
       type: "",
+      handleMouseDown: () => mouseDownMock(),
+      handleMouseEnter: () => mouseEnterMock(),
+      handleMouseUp: () => mouseUpMock(),
     };
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   it("renders without error", () => {
     wrapper = shallow(<Node {...nodeProps} />);
     nodeComponent = wrapper.find("div");
     expect(nodeComponent).toHaveLength(1);
+  });
+
+  describe("for events", () => {
+    it("responds to a mouse down", () => {
+      wrapper = shallow(<Node {...nodeProps} />);
+      nodeComponent = wrapper.find("div").simulate("mouseDown");
+      expect(mouseDownMock).toHaveBeenCalledTimes(1);
+    });
+
+    it("responds to a mouse enter", () => {
+      wrapper = shallow(<Node {...nodeProps} />);
+      nodeComponent = wrapper.find("div").simulate("mouseEnter");
+      expect(mouseEnterMock).toHaveBeenCalledTimes(1);
+    });
+
+    it("responds to a mouse up", () => {
+      wrapper = shallow(<Node {...nodeProps} />);
+      nodeComponent = wrapper.find("div").simulate("mouseUp");
+      expect(mouseUpMock).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe("for start and end nodes", () => {
