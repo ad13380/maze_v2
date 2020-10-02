@@ -18,3 +18,18 @@ export const getNodeTypeTotal = (grid, nodeType) => {
   });
   return counter;
 };
+
+export const generateDijkstraGrid = () => {
+  // generate 10 x 10 grid
+  return new Array(6).fill("").map((val, row) =>
+    new Array(6).fill("").map((val, col) => ({
+      row,
+      col,
+      isStart: false,
+      isFinish: false,
+      distance: Infinity,
+      type: "",
+      previousNode: null,
+    }))
+  );
+};
