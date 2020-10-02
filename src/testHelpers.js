@@ -4,6 +4,7 @@ export const generateGrid = (nodeType) => {
       type: nodeType,
       isStart: false,
       isFinish: false,
+      nodeDrag: {},
     }))
   );
 };

@@ -1,5 +1,5 @@
 import { useNewStartFinish } from "./useNewStartFinish";
-import { generateGrid, getNodeTypeTotal } from "../../testHelpers";
+import { generateGrid } from "../../testHelpers";
 
 describe("useNewStartFinish", () => {
   const [getNewStartFinish] = useNewStartFinish();
