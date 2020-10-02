@@ -1,8 +1,12 @@
 import { useNewStartFinish } from "./useNewStartFinish";
 
 describe("useNewStartFinish", () => {
-  // placeholder
-  it("placeholder", () => {
-    expect(true).toBeTruthy();
+  const [getNewStartFinish] = useNewStartFinish();
+  let grid;
+
+  describe("for old node location", () => {
+    it("placeholder", () => {
+      expect(true).toBeTruthy();
+    });
   });
 });

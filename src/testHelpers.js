@@ -2,6 +2,8 @@ export const generateGrid = (nodeType) => {
   return new Array(3).fill("").map(() =>
     new Array(3).fill("").map(() => ({
       type: nodeType,
+      isStart: false,
+      isFinish: false,
     }))
   );
 };

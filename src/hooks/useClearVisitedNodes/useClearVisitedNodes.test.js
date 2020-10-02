@@ -1,4 +1,5 @@
 import { useClearVisitedNodes } from "./useClearVisitedNodes";
+import { generateGrid, getNodeTypeTotal } from "../../testHelpers";
 
 describe("useClearVisitedNodes", () => {
   let grid;
@@ -11,25 +12,6 @@ describe("useClearVisitedNodes", () => {
     { row: 1, col: 1 },
     { row: 2, col: 2 },
   ];
-
-  // generates a 3x3 grid
-  const generateGrid = (nodeType) => {
-    return new Array(3).fill("").map(() =>
-      new Array(3).fill("").map(() => ({
-        type: nodeType,
-      }))
-    );
-  };
-
-  const getNodeTypeTotal = (grid, nodeType) => {
-    let counter = 0;
-    grid.forEach((row) => {
-      row.forEach((node) => {
-        if (node.type === nodeType) counter++;
-      });
-    });
-    return counter;
-  };
 
   it("returns original grid if there are no visited nodes", () => {
     grid = generateGrid("wall");
