@@ -124,3 +124,34 @@ export const expectedDijkstraResult = [
     row: 3,
   },
 ];
+
+export const expectedPathResult = [
+  {
+    row: 3,
+    col: 2,
+  },
+  {
+    row: 4,
+    col: 2,
+  },
+  {
+    row: 5,
+    col: 2,
+  },
+  {
+    row: 5,
+    col: 3,
+  },
+  {
+    row: 5,
+    col: 4,
+  },
+  {
+    row: 4,
+    col: 4,
+  },
+  {
+    row: 3,
+    col: 4,
+  },
+];
