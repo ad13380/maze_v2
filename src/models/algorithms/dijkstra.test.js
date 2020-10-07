@@ -31,4 +31,6 @@ describe("dijkstra", () => {
       shortestPathNodesInOrder[i].col = expectedPathResult[i].col;
     }
   });
+
+  // describe("for a solvable solution")
 });

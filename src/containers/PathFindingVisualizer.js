@@ -164,27 +164,41 @@ const PathFindingVisualizer = () => {
 
   return (
     <>
-      <Title />
+      <Title data-test="title-component" />
       {isSolvable ? (
         <Counter
+          data-test="counter-component"
           isPathClear={isPathClear}
           visitedNodesInOrder={visitedNodesInOrder}
           shortestPathNodesInOrder={shortestPathNodesInOrder}
         />
       ) : (
-        <Error />
+        <Error data-test="error-component" />
       )}
-      <Button handleOnClick={handleClearScreen} onDisable={isAnimating}>
+      <Button
+        data-test="clear-screen-button-component"
+        handleOnClick={handleClearScreen}
+        onDisable={isAnimating}
+      >
         Clear Screen
       </Button>
-      <Button handleOnClick={handleClearVisited} onDisable={isAnimating}>
+      <Button
+        data-test="clear-path-button-component"
+        handleOnClick={handleClearVisited}
+        onDisable={isAnimating}
+      >
         Clear Path
       </Button>
-      <Button handleOnClick={handleRunAlgorithm} onDisable={!isPathClear}>
+      <Button
+        data-test="run-algo-button-component"
+        handleOnClick={handleRunAlgorithm}
+        onDisable={!isPathClear}
+      >
         Run Algorithm
       </Button>
       <br />
       <Grid
+        data-test="grid-component"
         grid={grid}
         handleMouseDown={handleMouseDown}
         handleMouseEnter={handleMouseEnter}
