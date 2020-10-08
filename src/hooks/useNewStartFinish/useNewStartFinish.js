@@ -7,8 +7,8 @@ export const useNewStartFinish = () => {
     newNodeLoc,
     startFinishAttribute
   ) => {
-    if (nodeLoc.row === newNodeLoc.row && nodeLoc.col === newNodeLoc.col)
-      return;
+    if (nodeLoc.row === newNodeLoc.newRow && nodeLoc.col === newNodeLoc.newCol)
+      return grid;
     const { row, col } = nodeLoc;
     const { newRow, newCol } = newNodeLoc;
     const updatedGrid = _.cloneDeep(grid);

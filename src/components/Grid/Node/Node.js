@@ -47,6 +47,7 @@ const Node = (props) => {
 
   return (
     <div
+      id={`node-${row}-${col}`}
       className={getNodeClass()}
       onMouseDown={() => handleMouseDown(row, col)}
       onMouseEnter={() => handleMouseEnter(row, col)}
