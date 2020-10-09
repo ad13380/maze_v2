@@ -8,16 +8,17 @@ jest.useFakeTimers();
 describe("when clicking clear path button", () => {
   const wrapper = mount(<App />);
   const runAlgoButton = wrapper.find('[data-test="run-algo-button-component"]');
-  const clearScreenButton = wrapper.find(
-    '[data-test="clear-screen-button-component"]'
+  const clearPathButton = wrapper.find(
+    '[data-test="clear-path-button-component"]'
   );
 
   it("clears path and visited nodes", () => {
+    runAlgoButton.simulate("click");
     act(() => {
-      // runAlgoButton.simulate("click");
-      jest.runAllTimers();
-      wrapper.update();
+      runAlgoButton.simulate("click");
+      jest.runOnlyPendingTimers();
     });
-    console.log(wrapper.instance());
+    clearPathButton.simulate("click");
+    expect(wrapper.find(".node-visited").length).toEqual(0);
   });
 });
