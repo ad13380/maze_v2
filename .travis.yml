@@ -1,6 +1,6 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=d26d741ac63463370be9aece37d583779e4f39b43bdee62b14675d23cefac3b4
+    - CC_TEST_REPORTER_ID=99a95b4ed919fe2b4b5135b454126bc7c0fc92976cbe55e9b003124151d8e0a4
 
 langauge: node_js
 
