@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import { act } from "@testing-library/react";
+import { act, waitFor } from "@testing-library/react";
 import App from "../App";
 
 jest.useFakeTimers();
@@ -12,10 +12,9 @@ describe("when clicking clear path button", () => {
     '[data-test="clear-path-button-component"]'
   );
 
-  it("clears path and visited nodes", () => {
+  it("clears path and visited nodes", async () => {
     runAlgoButton.simulate("click");
     act(() => {
-      runAlgoButton.simulate("click");
       jest.runOnlyPendingTimers();
     });
     clearPathButton.simulate("click");
