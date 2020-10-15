@@ -55,8 +55,10 @@ const PathFindingVisualizer = () => {
     const updatedGrid = _.cloneDeep(grid);
     const asyncAnimate = async () => {
       setIsAnimating(true);
-      await animate(updatedGrid, visitedNodesInOrder, "visited", 20);
-      await animate(updatedGrid, shortestPathNodesInOrder, "path", 70);
+      let i = 0;
+      await animate(updatedGrid, visitedNodesInOrder, "visited", 20, i);
+      i = 0;
+      await animate(updatedGrid, shortestPathNodesInOrder, "path", 70, i);
       setIsAnimating(false);
     };
     asyncAnimate();
@@ -146,20 +148,28 @@ const PathFindingVisualizer = () => {
     setGrid(updatedGrid);
   };
 
-  const animate = async (updatedGrid, nodeArray, type, delay) => {
+  const animate = async (updatedGrid, nodeArray, type, delay, j) => {
     setIsPathClear(false);
-    let i = 0;
-    return await new Promise((resolve) => {
-      const intervalID = setInterval(() => {
-        const { row, col } = nodeArray[i];
-        updatedGrid[row][col].type = type;
-        setGrid([...updatedGrid]);
-        if (++i === nodeArray.length) {
-          clearInterval(intervalID);
-          resolve();
-        }
-      }, delay);
-    });
+    const { row, col } = nodeArray[j];
+    updatedGrid[row][col].type = type;
+    setGrid([...updatedGrid]);
+    if (j < 10) {
+      //animate(updatedGrid, nodeArray, type, delay);
+      j++;
+      setTimeout(() => animate(updatedGrid, nodeArray, type, delay, j), 10);
+    }
+
+    // return await new Promise((resolve) => {
+    //   const intervalID = setInterval(() => {
+    //     const { row, col } = nodeArray[i];
+    //     updatedGrid[row][col].type = type;
+    //     setGrid([...updatedGrid]);
+    //     if (++i === nodeArray.length) {
+    //       clearInterval(intervalID);
+    //       resolve();
+    //     }
+    //   }, delay);
+    // });
   };
 
   return (
