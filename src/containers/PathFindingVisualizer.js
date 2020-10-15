@@ -56,7 +56,7 @@ const PathFindingVisualizer = () => {
     const asyncAnimate = async () => {
       setIsAnimating(true);
       await animate(updatedGrid, visitedNodesInOrder, "visited", 20);
-      await animate(updatedGrid, shortestPathNodesInOrder, "path", 70);
+      await animate(updatedGrid, shortestPathNodesInOrder, "path", 30);
       setIsAnimating(false);
     };
     asyncAnimate();
