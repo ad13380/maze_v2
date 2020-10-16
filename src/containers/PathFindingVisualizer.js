@@ -5,6 +5,7 @@ import Error from "../components/Error/Error";
 import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
 import { dijkstra, shortestPath } from "../models/algorithms/dijkstra";
+import { mazeRecursive } from "../models/mazeGeneration/mazeRecursive";
 import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
 import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
 import { useClearVisitedNodes } from "../hooks/useClearVisitedNodes/useClearVisitedNodes";
@@ -26,6 +27,7 @@ const PathFindingVisualizer = () => {
   const [isPathClear, setIsPathClear] = useState(true);
   const [visitedNodesInOrder, setVisitedNodesInOrder] = useState([]);
   const [shortestPathNodesInOrder, setShortestPathNodesInOrder] = useState([]);
+  const [mazeNodesInOrder, setMazeNodesInOrder] = useState([]);
 
   const [getInitialGrid] = useInitialGrid();
   const [getNewStartFinish] = useNewStartFinish();
@@ -45,6 +47,17 @@ const PathFindingVisualizer = () => {
   }, []);
 
   useEffect(() => {
+    if (!mazeNodesInOrder.length) return;
+    const updatedGrid = _.cloneDeep(grid);
+    const asyncAnimate = async () => {
+      setIsAnimating(true);
+      await animate(updatedGrid, mazeNodesInOrder, "wall", 1000);
+      setIsAnimating(false);
+    };
+    asyncAnimate();
+  }, [mazeNodesInOrder]);
+
+  useEffect(() => {
     if (!visitedNodesInOrder.length || !shortestPathNodesInOrder.length) return;
     if (!visitedNodesInOrder[0]) {
       setIsSolvable(false);
@@ -55,8 +68,9 @@ const PathFindingVisualizer = () => {
     const updatedGrid = _.cloneDeep(grid);
     const asyncAnimate = async () => {
       setIsAnimating(true);
+      setIsPathClear(false);
       await animate(updatedGrid, visitedNodesInOrder, "visited", 20);
-      await animate(updatedGrid, shortestPathNodesInOrder, "path", 70);
+      await animate(updatedGrid, shortestPathNodesInOrder, "path", 50);
       setIsAnimating(false);
     };
     asyncAnimate();
@@ -95,6 +109,13 @@ const PathFindingVisualizer = () => {
       setNodeDrag({ isDragging: false, nodeType: "" });
     }
     setIsMousePressed(false);
+  };
+
+  const handleGenerateMaze = () => {
+    const updatedGrid = _.cloneDeep(grid);
+    const startNode = updatedGrid[startNodeLoc.row][startNodeLoc.col];
+    const finishNode = updatedGrid[finishNodeLoc.row][finishNodeLoc.col];
+    setMazeNodesInOrder(mazeRecursive(updatedGrid, startNode, finishNode));
   };
 
   const handleRunAlgorithm = async () => {
@@ -147,7 +168,6 @@ const PathFindingVisualizer = () => {
   };
 
   const animate = async (updatedGrid, nodeArray, type, delay) => {
-    setIsPathClear(false);
     let i = 0;
     return await new Promise((resolve) => {
       const intervalID = setInterval(() => {
@@ -190,12 +210,20 @@ const PathFindingVisualizer = () => {
         Clear Path
       </Button>
       <Button
+        data-test="generate-maze-button-component"
+        handleOnClick={handleGenerateMaze}
+        onDisable={isAnimating}
+      >
+        Generate Maze
+      </Button>
+      <Button
         data-test="run-algo-button-component"
         handleOnClick={handleRunAlgorithm}
-        onDisable={!isPathClear}
+        onDisable={!isPathClear || isAnimating}
       >
         Run Algorithm
       </Button>
+
       <br />
       <Grid
         data-test="grid-component"
