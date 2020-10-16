@@ -27,6 +27,8 @@ const PathFindingVisualizer = () => {
   const [visitedNodesInOrder, setVisitedNodesInOrder] = useState([]);
   const [shortestPathNodesInOrder, setShortestPathNodesInOrder] = useState([]);
 
+  const [testCounter, setTestCounter] = useState(0);
+
   const [getInitialGrid] = useInitialGrid();
   const [getNewStartFinish] = useNewStartFinish();
   const [getClearVisitedNodes] = useClearVisitedNodes();
@@ -56,9 +58,12 @@ const PathFindingVisualizer = () => {
     const asyncAnimate = async () => {
       setIsAnimating(true);
       await animate(updatedGrid, visitedNodesInOrder, "visited", 20);
+      setTestCounter("hello");
       await animate(updatedGrid, shortestPathNodesInOrder, "path", 70);
+      setTestCounter("goodbye");
       setIsAnimating(false);
     };
+
     asyncAnimate();
   }, [visitedNodesInOrder, shortestPathNodesInOrder]);
 
@@ -158,12 +163,13 @@ const PathFindingVisualizer = () => {
           clearInterval(intervalID);
           resolve();
         }
-      }, delay);
+      }, 0);
     });
   };
 
   return (
     <>
+      {testCounter}
       <Title data-test="title-component" />
       {isSolvable ? (
         <Counter
