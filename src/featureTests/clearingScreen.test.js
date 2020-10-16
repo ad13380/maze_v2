@@ -5,15 +5,17 @@ import App from "../App";
 
 jest.useFakeTimers();
 
-describe("when clicking clear path button", () => {
+describe("when clicking clear screen button", () => {
   let wrapper;
   let runAlgoButton;
-  let clearPathButton;
+  let clearScreenButton;
 
   beforeEach(() => {
     wrapper = mount(<App />);
     runAlgoButton = wrapper.find('[data-test="run-algo-button-component"]');
-    clearPathButton = wrapper.find('[data-test="clear-path-button-component"]');
+    clearScreenButton = wrapper.find(
+      '[data-test="clear-screen-button-component"]'
+    );
   });
 
   const updateGrid = async () => {
@@ -35,7 +37,7 @@ describe("when clicking clear path button", () => {
     // render path nodes
     await updateGrid();
     // click clear path button
-    clearPathButton.simulate("click");
+    clearScreenButton.simulate("click");
     expect(wrapper.find(".node-visited").length).toEqual(0);
   });
 
@@ -51,11 +53,11 @@ describe("when clicking clear path button", () => {
     // render path nodes
     await updateGrid();
     // click clear path button
-    clearPathButton.simulate("click");
+    clearScreenButton.simulate("click");
     expect(wrapper.find(".node-shortest-path").length).toEqual(0);
   });
 
-  it("does not clear wall nodes", async () => {
+  it("clears wall nodes", async () => {
     // move start and finish nearer together
     wrapper.find("#node-10-12").simulate("mouseDown");
     wrapper.find("#node-10-25").simulate("mouseEnter");
@@ -71,7 +73,7 @@ describe("when clicking clear path button", () => {
     // render path nodes
     await updateGrid();
     // click clear path button
-    clearPathButton.simulate("click");
-    expect(wrapper.find(".node-wall").length).toEqual(3);
+    clearScreenButton.simulate("click");
+    expect(wrapper.find(".node-wall").length).toEqual(0);
   });
 });

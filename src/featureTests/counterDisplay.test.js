@@ -7,6 +7,7 @@ describe("for an unsolvable maze", () => {
   const runAlgoButton = wrapper.find('[data-test="run-algo-button-component"]');
 
   it("renders an error", () => {
+    // draw a maze
     wrapper.find("#node-9-11").simulate("mouseDown");
     wrapper.find("#node-9-12").simulate("mouseDown");
     wrapper.find("#node-9-13").simulate("mouseDown");
