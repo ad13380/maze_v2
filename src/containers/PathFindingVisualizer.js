@@ -13,8 +13,8 @@ import { useSetWallNode } from "../hooks/useSetWallNode/useSetWallNode";
 import { useSetDragNode } from "../hooks/useSetDragNode/useSetDragNode";
 var _ = require("lodash");
 
-const GRID_ROWS = 20;
-const GRID_COLS = 40;
+const GRID_ROWS = 21;
+const GRID_COLS = 41;
 
 const PathFindingVisualizer = () => {
   const [grid, setGrid] = useState([]);
