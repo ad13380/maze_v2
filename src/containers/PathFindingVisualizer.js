@@ -48,11 +48,18 @@ const PathFindingVisualizer = () => {
 
   useEffect(() => {
     if (!mazeNodesInOrder.length) return;
-    const updatedGrid = _.cloneDeep(grid);
+    const updatedGrid = getInitialGrid(
+      GRID_ROWS,
+      GRID_COLS,
+      startNodeLoc,
+      finishNodeLoc,
+      nodeDrag
+    );
     const asyncAnimate = async () => {
       setIsAnimating(true);
-      await animate(updatedGrid, mazeNodesInOrder, "wall", 1000);
+      await animate(updatedGrid, mazeNodesInOrder, "wall", 70);
       setIsAnimating(false);
+      setIsPathClear(true);
     };
     asyncAnimate();
   }, [mazeNodesInOrder]);
