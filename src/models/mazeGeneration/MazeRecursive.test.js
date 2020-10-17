@@ -1,4 +1,4 @@
-import { MazeRecursive } from "./MazeRecursive";
+import { MazeRecursive } from "./mazeRecursive";
 import { expectedMazeResult } from "./mazeRecursiveTestData";
 import { generateTestGrid } from "../../testHelpers";
 
