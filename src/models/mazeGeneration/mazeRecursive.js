@@ -65,8 +65,7 @@ export class MazeRecursive {
   }
 
   randomOddNumber(min, max) {
-    const randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-    let randomOddNumber = Math.round(randomNumber / 2) * 2 - 1;
+    let randomOddNumber = this.randomEvenNumber(min, max) - 1;
     if (randomOddNumber < min) randomOddNumber += 2;
     return randomOddNumber;
   }
