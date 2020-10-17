@@ -5,12 +5,7 @@ import Error from "../components/Error/Error";
 import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
 import { dijkstra, shortestPath } from "../models/algorithms/dijkstra";
-
-//test
-// import { mazeRecursive } from "../models/mazeGeneration/mazeRecursive";
-import { MazeRecursive } from "../models/mazeGeneration/test";
-//test
-
+import { MazeRecursive } from "../models/mazeGeneration/MazeRecursive";
 import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
 import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
 import { useClearVisitedNodes } from "../hooks/useClearVisitedNodes/useClearVisitedNodes";
@@ -132,11 +127,7 @@ const PathFindingVisualizer = () => {
     const updatedGrid = _.cloneDeep(grid);
     const startNode = updatedGrid[startNodeLoc.row][startNodeLoc.col];
     const finishNode = updatedGrid[finishNodeLoc.row][finishNodeLoc.col];
-
-    //test
     const mazeInstance = new MazeRecursive(updatedGrid, startNode, finishNode);
-    //test
-
     setMazeNodesInOrder(mazeInstance.getMaze());
   };
 
