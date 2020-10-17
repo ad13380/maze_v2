@@ -1,10 +1,10 @@
 import { dijkstra, shortestPath } from "./Dijkstra";
 import { expectedDijkstraResult, expectedPathResult } from "./dijkstraTestData";
-import { generateDijkstraGrid } from "../../testHelpers";
+import { generateTestGrid } from "../../testHelpers";
 
 describe("dijkstra", () => {
   describe("for a solvable maze", () => {
-    let grid = generateDijkstraGrid();
+    let grid = generateTestGrid();
     // add start nodes
     grid[3][2].isStart = true;
     // add finish node
@@ -39,7 +39,7 @@ describe("dijkstra", () => {
   });
 
   describe("for an unsolvable maze", () => {
-    let grid = generateDijkstraGrid();
+    let grid = generateTestGrid();
     // add start nodes
     grid[0][0].isStart = true;
     // add finish node

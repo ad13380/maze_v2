@@ -73,11 +73,11 @@
 .node-visited {
   animation-name: visitedAnimation;
   animation-duration: 1.5s;
-  animation-timing-function: ease-out;
+  /* animation-timing-function: ease-out;
   animation-direction: alternate;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
-  animation-play-state: running;
+  animation-play-state: running; */
   background-color: rgba(85, 194, 211, 0.75);
 }
 
