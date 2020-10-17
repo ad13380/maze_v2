@@ -238,6 +238,7 @@ const PathFindingVisualizer = () => {
       >
         Generate Maze
       </Button>
+      <br />
       <Button
         data-test="run-algo-button-component"
         handleOnClick={handleRunAlgorithm}

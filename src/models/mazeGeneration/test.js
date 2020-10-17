@@ -11,7 +11,6 @@ export class MazeRecursive {
   getMaze() {
     this.addOuterWalls(this.rowNum, this.colNum);
     this.addInnerWalls(true, 1, this.colNum - 1, 1, this.rowNum - 1);
-    // console.log(this.nodesInOrder);
     return this.nodesInOrder;
   }
 
@@ -71,8 +70,16 @@ export class MazeRecursive {
   }
 
   addNodeToArray(row, col) {
+    if (this.isStartOrFinish(row, col)) return;
+
     const node = this.grid[row][col];
     node.type = "wall";
     this.nodesInOrder.push(node);
+  }
+
+  isStartOrFinish(row, col) {
+    const isStart = row === this.startNode.row && col === this.startNode.col;
+    const isFinish = row === this.finishNode.row && col === this.finishNode.col;
+    return isStart || isFinish;
   }
 }
