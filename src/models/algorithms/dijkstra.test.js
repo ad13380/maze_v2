@@ -1,36 +1,62 @@
-import { dijkstra, shortestPath } from "./dijkstra";
+import { dijkstra, shortestPath } from "./Dijkstra";
 import { expectedDijkstraResult, expectedPathResult } from "./dijkstraTestData";
-import { generateDijkstraGrid } from "../../testHelpers";
+import { generateTestGrid } from "../../testHelpers";
 
 describe("dijkstra", () => {
-  let grid = generateDijkstraGrid();
-  // add start nodes
-  grid[3][2].isStart = true;
-  // add finish node
-  grid[3][4].isFinish = true;
+  describe("for a solvable maze", () => {
+    let grid = generateTestGrid();
+    // add start nodes
+    grid[3][2].isStart = true;
+    // add finish node
+    grid[3][4].isFinish = true;
 
-  // add wall
-  grid[2][3].type = "wall";
-  grid[3][3].type = "wall";
-  grid[4][3].type = "wall";
+    // add wall
+    grid[2][3].type = "wall";
+    grid[3][3].type = "wall";
+    grid[4][3].type = "wall";
 
-  const visitedNodesInOrder = dijkstra(grid, grid[3][2], grid[3][4]);
+    const visitedNodesInOrder = dijkstra(grid, grid[3][2], grid[3][4]);
 
-  it("returns an array of visited nodes in search order", () => {
-    for (let i = 0; i < visitedNodesInOrder.length; i++) {
-      expect(visitedNodesInOrder[i].row).toEqual(expectedDijkstraResult[i].row);
-      expect(visitedNodesInOrder[i].col).toEqual(expectedDijkstraResult[i].col);
-    }
+    it("returns an array of visited nodes in search order", () => {
+      for (let i = 0; i < visitedNodesInOrder.length; i++) {
+        expect(visitedNodesInOrder[i].row).toEqual(
+          expectedDijkstraResult[i].row
+        );
+        expect(visitedNodesInOrder[i].col).toEqual(
+          expectedDijkstraResult[i].col
+        );
+      }
+    });
+
+    it("returns an array of the shortest path nodes in order", () => {
+      const finishNode = visitedNodesInOrder.slice(-1)[0];
+      const shortestPathNodesInOrder = shortestPath(finishNode);
+      for (let i = 0; i < shortestPathNodesInOrder.length; i++) {
+        expect(shortestPathNodesInOrder[i].row).toEqual(
+          expectedPathResult[i].row
+        );
+        expect(shortestPathNodesInOrder[i].col).toEqual(
+          expectedPathResult[i].col
+        );
+      }
+    });
   });
 
-  it("returns an array of the shortest path nodes in order", () => {
-    const finishNode = visitedNodesInOrder.slice(-1)[0];
-    const shortestPathNodesInOrder = shortestPath(finishNode);
-    for (let i = 0; i < shortestPathNodesInOrder.length; i++) {
-      shortestPathNodesInOrder[i].row = expectedPathResult[i].row;
-      shortestPathNodesInOrder[i].col = expectedPathResult[i].col;
-    }
-  });
+  describe("for an unsolvable maze", () => {
+    let grid = generateTestGrid();
+    // add start nodes
+    grid[0][0].isStart = true;
+    // add finish node
+    grid[3][4].isFinish = true;
 
-  // describe("for a solvable solution")
+    // add wall
+    grid[0][1].type = "wall";
+    grid[1][1].type = "wall";
+    grid[1][0].type = "wall";
+
+    const visitedNodesInOrder = dijkstra(grid, grid[0][0], grid[3][4]);
+    it("returns false", () => {
+      expect(visitedNodesInOrder).toEqual([false]);
+    });
+  });
 });

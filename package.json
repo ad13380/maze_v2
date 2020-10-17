@@ -42,7 +42,8 @@
       "src/serviceWorker.js",
       "src/testHelpers.js",
       "src/reducers/nodeClassReducer.js",
-      "src/models/algorithms/dijkstraTestData.js"
+      "src/models/algorithms/dijkstraTestData.js",
+      "src/models/mazeGeneration/mazeRecursiveTestData.js"
     ]
   }
 }

@@ -4,7 +4,8 @@ import Button from "../components/Button/Button";
 import Error from "../components/Error/Error";
 import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
-import { dijkstra, shortestPath } from "../models/algorithms/dijkstra";
+import { dijkstra, shortestPath } from "../models/algorithms/Dijkstra";
+import { MazeRecursive } from "../models/mazeGeneration/MazeRecursive";
 import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
 import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
 import { useClearVisitedNodes } from "../hooks/useClearVisitedNodes/useClearVisitedNodes";
@@ -12,8 +13,8 @@ import { useSetWallNode } from "../hooks/useSetWallNode/useSetWallNode";
 import { useSetDragNode } from "../hooks/useSetDragNode/useSetDragNode";
 var _ = require("lodash");
 
-const GRID_ROWS = 20;
-const GRID_COLS = 40;
+const GRID_ROWS = 21;
+const GRID_COLS = 41;
 
 const PathFindingVisualizer = () => {
   const [grid, setGrid] = useState([]);
@@ -26,6 +27,7 @@ const PathFindingVisualizer = () => {
   const [isPathClear, setIsPathClear] = useState(true);
   const [visitedNodesInOrder, setVisitedNodesInOrder] = useState([]);
   const [shortestPathNodesInOrder, setShortestPathNodesInOrder] = useState([]);
+  const [mazeNodesInOrder, setMazeNodesInOrder] = useState([]);
 
   const [getInitialGrid] = useInitialGrid();
   const [getNewStartFinish] = useNewStartFinish();
@@ -33,6 +35,7 @@ const PathFindingVisualizer = () => {
   const [getSetWallNode] = useSetWallNode();
   const [getSetDragNode] = useSetDragNode();
 
+  // render initial grid
   useEffect(() => {
     const initialGrid = getInitialGrid(
       GRID_ROWS,
@@ -44,6 +47,28 @@ const PathFindingVisualizer = () => {
     setGrid(initialGrid);
   }, []);
 
+  // render random maze
+  useEffect(() => {
+    if (!mazeNodesInOrder.length) return;
+
+    const updatedGrid = getInitialGrid(
+      GRID_ROWS,
+      GRID_COLS,
+      startNodeLoc,
+      finishNodeLoc,
+      nodeDrag
+    );
+    const asyncAnimate = async () => {
+      console.log("running");
+      setIsAnimating(true);
+      await animate(updatedGrid, mazeNodesInOrder, "wall", 20);
+      setIsAnimating(false);
+      setIsPathClear(true);
+    };
+    asyncAnimate();
+  }, [mazeNodesInOrder]);
+
+  // render visited nodes and path nodes
   useEffect(() => {
     if (!visitedNodesInOrder.length || !shortestPathNodesInOrder.length) return;
     if (!visitedNodesInOrder[0]) {
@@ -55,8 +80,9 @@ const PathFindingVisualizer = () => {
     const updatedGrid = _.cloneDeep(grid);
     const asyncAnimate = async () => {
       setIsAnimating(true);
+      setIsPathClear(false);
       await animate(updatedGrid, visitedNodesInOrder, "visited", 20);
-      await animate(updatedGrid, shortestPathNodesInOrder, "path", 70);
+      await animate(updatedGrid, shortestPathNodesInOrder, "path", 50);
       setIsAnimating(false);
     };
     asyncAnimate();
@@ -95,6 +121,14 @@ const PathFindingVisualizer = () => {
       setNodeDrag({ isDragging: false, nodeType: "" });
     }
     setIsMousePressed(false);
+  };
+
+  const handleGenerateMaze = () => {
+    const updatedGrid = _.cloneDeep(grid);
+    const startNode = updatedGrid[startNodeLoc.row][startNodeLoc.col];
+    const finishNode = updatedGrid[finishNodeLoc.row][finishNodeLoc.col];
+    const mazeInstance = new MazeRecursive(updatedGrid, startNode, finishNode);
+    setMazeNodesInOrder(mazeInstance.getMaze());
   };
 
   const handleRunAlgorithm = async () => {
@@ -147,7 +181,6 @@ const PathFindingVisualizer = () => {
   };
 
   const animate = async (updatedGrid, nodeArray, type, delay) => {
-    setIsPathClear(false);
     let i = 0;
     return await new Promise((resolve) => {
       const intervalID = setInterval(() => {
@@ -190,12 +223,21 @@ const PathFindingVisualizer = () => {
         Clear Path
       </Button>
       <Button
+        data-test="generate-maze-button-component"
+        handleOnClick={handleGenerateMaze}
+        onDisable={isAnimating}
+      >
+        Generate Maze
+      </Button>
+      <br />
+      <Button
         data-test="run-algo-button-component"
         handleOnClick={handleRunAlgorithm}
-        onDisable={!isPathClear}
+        onDisable={!isPathClear || isAnimating}
       >
         Run Algorithm
       </Button>
+
       <br />
       <Grid
         data-test="grid-component"
