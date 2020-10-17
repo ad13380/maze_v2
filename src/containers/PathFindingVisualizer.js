@@ -5,7 +5,12 @@ import Error from "../components/Error/Error";
 import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
 import { dijkstra, shortestPath } from "../models/algorithms/dijkstra";
-import { mazeRecursive } from "../models/mazeGeneration/mazeRecursive";
+
+//test
+// import { mazeRecursive } from "../models/mazeGeneration/mazeRecursive";
+import { MazeRecursive } from "../models/mazeGeneration/test";
+//test
+
 import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
 import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
 import { useClearVisitedNodes } from "../hooks/useClearVisitedNodes/useClearVisitedNodes";
@@ -35,6 +40,7 @@ const PathFindingVisualizer = () => {
   const [getSetWallNode] = useSetWallNode();
   const [getSetDragNode] = useSetDragNode();
 
+  // render initial grid
   useEffect(() => {
     const initialGrid = getInitialGrid(
       GRID_ROWS,
@@ -46,8 +52,10 @@ const PathFindingVisualizer = () => {
     setGrid(initialGrid);
   }, []);
 
+  // render random maze
   useEffect(() => {
     if (!mazeNodesInOrder.length) return;
+
     const updatedGrid = getInitialGrid(
       GRID_ROWS,
       GRID_COLS,
@@ -56,14 +64,16 @@ const PathFindingVisualizer = () => {
       nodeDrag
     );
     const asyncAnimate = async () => {
+      console.log("running");
       setIsAnimating(true);
-      await animate(updatedGrid, mazeNodesInOrder, "wall", 70);
+      await animate(updatedGrid, mazeNodesInOrder, "wall", 20);
       setIsAnimating(false);
       setIsPathClear(true);
     };
     asyncAnimate();
   }, [mazeNodesInOrder]);
 
+  // render visited nodes and path nodes
   useEffect(() => {
     if (!visitedNodesInOrder.length || !shortestPathNodesInOrder.length) return;
     if (!visitedNodesInOrder[0]) {
@@ -122,7 +132,12 @@ const PathFindingVisualizer = () => {
     const updatedGrid = _.cloneDeep(grid);
     const startNode = updatedGrid[startNodeLoc.row][startNodeLoc.col];
     const finishNode = updatedGrid[finishNodeLoc.row][finishNodeLoc.col];
-    setMazeNodesInOrder(mazeRecursive(updatedGrid, startNode, finishNode));
+
+    //test
+    const mazeInstance = new MazeRecursive(updatedGrid, startNode, finishNode);
+    //test
+
+    setMazeNodesInOrder(mazeInstance.getMaze());
   };
 
   const handleRunAlgorithm = async () => {
