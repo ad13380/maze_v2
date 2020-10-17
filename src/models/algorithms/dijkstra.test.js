@@ -1,4 +1,4 @@
-import { dijkstra, shortestPath } from "./Dijkstra";
+import { dijkstra, shortestPath } from "./dijkstra";
 import { expectedDijkstraResult, expectedPathResult } from "./dijkstraTestData";
 import { generateTestGrid } from "../../testHelpers";
 
