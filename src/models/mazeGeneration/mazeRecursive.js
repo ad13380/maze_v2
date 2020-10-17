@@ -10,7 +10,7 @@ export class MazeRecursive {
 
   getMaze() {
     this.addOuterWalls(this.rowNum, this.colNum);
-    this.addInnerWalls(true, 1, this.colNum - 1, 1, this.rowNum - 1);
+    this.addInnerWalls(false, 1, this.colNum - 1, 1, this.rowNum - 1);
     return this.nodesInOrder;
   }
 

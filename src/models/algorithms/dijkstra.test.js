@@ -32,8 +32,12 @@ describe("dijkstra", () => {
       const finishNode = visitedNodesInOrder.slice(-1)[0];
       const shortestPathNodesInOrder = shortestPath(finishNode);
       for (let i = 0; i < shortestPathNodesInOrder.length; i++) {
-        shortestPathNodesInOrder[i].row = expectedPathResult[i].row;
-        shortestPathNodesInOrder[i].col = expectedPathResult[i].col;
+        expect(shortestPathNodesInOrder[i].row).toEqual(
+          expectedPathResult[i].row
+        );
+        expect(shortestPathNodesInOrder[i].col).toEqual(
+          expectedPathResult[i].col
+        );
       }
     });
   });

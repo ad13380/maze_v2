@@ -1,4 +1,5 @@
 import { MazeRecursive } from "./MazeRecursive";
+import { expectedMazeResult } from "./mazeRecursiveTestData";
 import { generateTestGrid } from "../../testHelpers";
 
 describe("MazeRecursive", () => {
@@ -11,13 +12,19 @@ describe("MazeRecursive", () => {
 
   beforeEach(() => {
     mazeRecursive = new MazeRecursive(grid, grid[3][2], grid[3][4]);
+    // mock Math.random value
+    jest.spyOn(global.Math, "random").mockReturnValue(0.5);
   });
 
-  it("true", () => {
-    mazeRecursive.getMaze().forEach((node) => {
-      const { row, col } = node;
-      console.log(row, col);
-    });
-    expect(true).toEqual(true);
+  afterEach(() => {
+    jest.spyOn(global.Math, "random").mockRestore();
+  });
+
+  it("generates a maze", () => {
+    const mazeNodes = mazeRecursive.getMaze();
+    for (let i = 0; i < mazeNodes.length; i++) {
+      expect(mazeNodes[i].row).toEqual(expectedMazeResult[i].row);
+      expect(mazeNodes[i].col).toEqual(expectedMazeResult[i].col);
+    }
   });
 });
