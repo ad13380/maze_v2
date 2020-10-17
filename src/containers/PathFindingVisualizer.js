@@ -4,7 +4,7 @@ import Button from "../components/Button/Button";
 import Error from "../components/Error/Error";
 import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
-import { dijkstra, shortestPath } from "../models/algorithms/Dijkstra";
+import { dijkstra, shortestPath } from "../models/algorithms/dijkstra";
 import { MazeRecursive } from "../models/mazeGeneration/mazeRecursive";
 import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
 import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
