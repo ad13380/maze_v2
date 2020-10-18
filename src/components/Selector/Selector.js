@@ -2,26 +2,28 @@ import React from "react";
 import "./Selector.css";
 
 const Selector = (props) => {
+  const { children, handleChangeAlgorithm } = props;
+
   return (
-    <div class="dropdown selector-styling">
+    <div className="dropdown selector-styling">
       <button
-        class="btn btn-link dropdown-toggle link-styling"
+        className="btn btn-link dropdown-toggle link-styling"
         type="button"
         id="dropdownMenuButton"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
       >
-        {props.children}
+        {children}
       </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">
+      <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a className="dropdown-item" href="#" onClick={handleChangeAlgorithm}>
           Dijkstra
         </a>
-        <a class="dropdown-item" href="#">
+        <a className="dropdown-item" href="#" onClick={handleChangeAlgorithm}>
           A* Euclidean
         </a>
-        <a class="dropdown-item" href="#">
+        <a className="dropdown-item" href="#" onClick={handleChangeAlgorithm}>
           A* Manhattan
         </a>
       </div>

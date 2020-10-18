@@ -6,11 +6,8 @@ import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
 import Selector from "../components/Selector/Selector";
 import { Dijkstra } from "../models/algorithms/dijkstra/Dijkstra";
-
-//test
-import { AStarManhattan } from "../models/algorithms/aStar/AStarManhattan";
-//test
-
+import { AStarEuclidean } from "../models/algorithms/aStarEuclidean/AStarEuclidean";
+import { AStarManhattan } from "../models/algorithms/aStarManhattan/AStarManhattan";
 import { MazeRecursive } from "../models/mazeGeneration/mazeRecursive";
 import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
 import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
@@ -34,6 +31,7 @@ const PathFindingVisualizer = () => {
   const [visitedNodesInOrder, setVisitedNodesInOrder] = useState([]);
   const [shortestPathNodesInOrder, setShortestPathNodesInOrder] = useState([]);
   const [mazeNodesInOrder, setMazeNodesInOrder] = useState([]);
+  const [currentAlgorithm, setCurrentAlgorithm] = useState("Dijkstra");
 
   const [getInitialGrid] = useInitialGrid();
   const [getNewStartFinish] = useNewStartFinish();
@@ -140,9 +138,14 @@ const PathFindingVisualizer = () => {
     const updatedGrid = _.cloneDeep(grid);
     const startNode = updatedGrid[startNodeLoc.row][startNodeLoc.col];
     const finishNode = updatedGrid[finishNodeLoc.row][finishNodeLoc.col];
-    const dijkstra = new Dijkstra(updatedGrid, startNode, finishNode);
-    setVisitedNodesInOrder(dijkstra.getVisitedNodes());
-    setShortestPathNodesInOrder(dijkstra.getShortestPath(finishNode));
+    const algorithmClass = getCurrentAlgorithmClass(currentAlgorithm);
+    const algorithmInstance = new algorithmClass(
+      updatedGrid,
+      startNode,
+      finishNode
+    );
+    setVisitedNodesInOrder(algorithmInstance.getVisitedNodes());
+    setShortestPathNodesInOrder(algorithmInstance.getShortestPath(finishNode));
   };
 
   const handleClearScreen = () => {
@@ -161,6 +164,21 @@ const PathFindingVisualizer = () => {
     setIsPathClear(true);
     const updatedGrid = getClearVisitedNodes(grid, visitedNodesInOrder);
     setGrid(updatedGrid);
+  };
+
+  const handleChangeAlgorithm = (event) => {
+    setCurrentAlgorithm(event.target.text);
+  };
+
+  const getCurrentAlgorithmClass = (currentAlgorithm) => {
+    switch (currentAlgorithm) {
+      case "Dijkstra":
+        return Dijkstra;
+      case "A* Euclidean":
+        return AStarEuclidean;
+      case "A* Manhattan":
+        return AStarManhattan;
+    }
   };
 
   const startDraggingNode = (nodeType) => {
@@ -237,7 +255,9 @@ const PathFindingVisualizer = () => {
       </Button>
       <br />
 
-      <Selector>Dijkstra</Selector>
+      <Selector handleChangeAlgorithm={handleChangeAlgorithm}>
+        {currentAlgorithm}
+      </Selector>
 
       <Button
         data-test="run-algo-button-component"
