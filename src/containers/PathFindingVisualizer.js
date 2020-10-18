@@ -4,6 +4,7 @@ import Button from "../components/Button/Button";
 import Error from "../components/Error/Error";
 import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
+import Selector from "../components/Selector/Selector";
 import { Dijkstra } from "../models/algorithms/dijkstra/Dijkstra";
 
 //test
@@ -235,6 +236,9 @@ const PathFindingVisualizer = () => {
         Generate Maze
       </Button>
       <br />
+
+      <Selector>Dijkstra</Selector>
+
       <Button
         data-test="run-algo-button-component"
         handleOnClick={handleRunAlgorithm}
