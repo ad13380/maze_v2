@@ -1,4 +1,4 @@
-import { dijkstra, shortestPath } from "./dijkstra";
+import { Dijkstra } from "./Dijkstra";
 import { expectedDijkstraResult, expectedPathResult } from "./dijkstraTestData";
 import { generateTestGrid } from "../../testHelpers";
 
@@ -15,7 +15,8 @@ describe("dijkstra", () => {
     grid[3][3].type = "wall";
     grid[4][3].type = "wall";
 
-    const visitedNodesInOrder = dijkstra(grid, grid[3][2], grid[3][4]);
+    const dijkstra = new Dijkstra(grid, grid[3][2], grid[3][4]);
+    const visitedNodesInOrder = dijkstra.getVisitedNodes();
 
     it("returns an array of visited nodes in search order", () => {
       for (let i = 0; i < visitedNodesInOrder.length; i++) {
@@ -30,7 +31,7 @@ describe("dijkstra", () => {
 
     it("returns an array of the shortest path nodes in order", () => {
       const finishNode = visitedNodesInOrder.slice(-1)[0];
-      const shortestPathNodesInOrder = shortestPath(finishNode);
+      const shortestPathNodesInOrder = dijkstra.getShortestPath(finishNode);
       for (let i = 0; i < shortestPathNodesInOrder.length; i++) {
         expect(shortestPathNodesInOrder[i].row).toEqual(
           expectedPathResult[i].row
@@ -54,7 +55,8 @@ describe("dijkstra", () => {
     grid[1][1].type = "wall";
     grid[1][0].type = "wall";
 
-    const visitedNodesInOrder = dijkstra(grid, grid[0][0], grid[3][4]);
+    const dijkstra = new Dijkstra(grid, grid[0][0], grid[3][4]);
+    const visitedNodesInOrder = dijkstra.getVisitedNodes();
     it("returns false", () => {
       expect(visitedNodesInOrder).toEqual([false]);
     });

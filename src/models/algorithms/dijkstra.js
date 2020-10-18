@@ -1,54 +1,62 @@
-export function dijkstra(grid, startNode, finishNode) {
-  const visitedNodesInOrder = [];
-  startNode.distance = 0;
-  const unvisitedNodes = getAllNodes(grid);
-
-  while (!!unvisitedNodes.length) {
-    sortNodesByDistance(unvisitedNodes);
-    const closestNode = unvisitedNodes.shift();
-    if (closestNode.type === "wall") continue;
-
-    if (closestNode.distance === Infinity) return [false];
-
-    closestNode.type = "visited";
-    visitedNodesInOrder.push(closestNode);
-    if (closestNode === finishNode) return visitedNodesInOrder;
-    updateUnvisitedNeighbours(closestNode, grid);
+export class Dijkstra {
+  constructor(grid, startNode, finishNode) {
+    this.grid = grid;
+    this.startNode = startNode;
+    this.finishNode = finishNode;
   }
-}
 
-function getAllNodes(grid) {
-  return grid.reduce((acc, val) => acc.concat(val));
-}
+  getVisitedNodes() {
+    this.startNode.distance = 0;
+    const visitedNodesInOrder = [];
+    let unvisitedNodes = this.getAllNodes();
 
-function sortNodesByDistance(unvisitedNodes) {
-  unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
-}
+    while (!!unvisitedNodes.length) {
+      unvisitedNodes = this.sortNodesByDistance(unvisitedNodes);
+      const currentNode = unvisitedNodes.shift();
+      if (currentNode.type === "wall") continue;
 
-function updateUnvisitedNeighbours(node, grid) {
-  const unvisitedNeighbours = getUnvisitedNeighbours(node, grid);
-  unvisitedNeighbours.forEach((neighbour) => {
-    neighbour.distance = node.distance + 1;
-    neighbour.previousNode = node;
-  });
-}
+      if (currentNode.distance === Infinity) return [false];
 
-function getUnvisitedNeighbours(node, grid) {
-  const neighbours = [];
-  const { col, row } = node;
-  if (row > 0) neighbours.push(grid[row - 1][col]);
-  if (row < grid.length - 1) neighbours.push(grid[row + 1][col]);
-  if (col > 0) neighbours.push(grid[row][col - 1]);
-  if (col < grid[0].length - 1) neighbours.push(grid[row][col + 1]);
-  return neighbours.filter((neighbour) => neighbour.type !== "visited");
-}
-
-export function shortestPath(finishNode) {
-  const shortestPathNodes = [];
-  let currentNode = finishNode;
-  while (currentNode !== null) {
-    shortestPathNodes.unshift(currentNode);
-    currentNode = currentNode.previousNode;
+      currentNode.type = "visited";
+      visitedNodesInOrder.push(currentNode);
+      if (currentNode === this.finishNode) return visitedNodesInOrder;
+      this.updateUnvisitedNeighbours(currentNode);
+    }
   }
-  return shortestPathNodes;
+
+  getAllNodes() {
+    return this.grid.reduce((acc, val) => acc.concat(val));
+  }
+
+  sortNodesByDistance(nodes) {
+    return nodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
+  }
+
+  updateUnvisitedNeighbours(node) {
+    const unvisitedNeighbours = this.getUnvisitedNeighbours(node);
+    unvisitedNeighbours.forEach((neighbour) => {
+      neighbour.distance = node.distance + 1;
+      neighbour.previousNode = node;
+    });
+  }
+
+  getUnvisitedNeighbours(node) {
+    const neighbours = [];
+    const { col, row } = node;
+    if (row > 0) neighbours.push(this.grid[row - 1][col]);
+    if (row < this.grid.length - 1) neighbours.push(this.grid[row + 1][col]);
+    if (col > 0) neighbours.push(this.grid[row][col - 1]);
+    if (col < this.grid[0].length - 1) neighbours.push(this.grid[row][col + 1]);
+    return neighbours.filter((neighbour) => neighbour.type !== "visited");
+  }
+
+  getShortestPath(finishNode) {
+    const shortestPathNodes = [];
+    let currentNode = finishNode;
+    while (currentNode !== null) {
+      shortestPathNodes.unshift(currentNode);
+      currentNode = currentNode.previousNode;
+    }
+    return shortestPathNodes;
+  }
 }

@@ -4,7 +4,7 @@ import Button from "../components/Button/Button";
 import Error from "../components/Error/Error";
 import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
-import { dijkstra, shortestPath } from "../models/algorithms/dijkstra";
+import { Dijkstra } from "../models/algorithms/Dijkstra";
 import { MazeRecursive } from "../models/mazeGeneration/mazeRecursive";
 import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
 import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
@@ -59,7 +59,6 @@ const PathFindingVisualizer = () => {
       nodeDrag
     );
     const asyncAnimate = async () => {
-      console.log("running");
       setIsAnimating(true);
       await animate(updatedGrid, mazeNodesInOrder, "wall", 20);
       setIsAnimating(false);
@@ -135,8 +134,9 @@ const PathFindingVisualizer = () => {
     const updatedGrid = _.cloneDeep(grid);
     const startNode = updatedGrid[startNodeLoc.row][startNodeLoc.col];
     const finishNode = updatedGrid[finishNodeLoc.row][finishNodeLoc.col];
-    setVisitedNodesInOrder(dijkstra(updatedGrid, startNode, finishNode));
-    setShortestPathNodesInOrder(shortestPath(finishNode));
+    const dijkstra = new Dijkstra(updatedGrid, startNode, finishNode);
+    setVisitedNodesInOrder(dijkstra.getVisitedNodes());
+    setShortestPathNodesInOrder(dijkstra.getShortestPath(finishNode));
   };
 
   const handleClearScreen = () => {
