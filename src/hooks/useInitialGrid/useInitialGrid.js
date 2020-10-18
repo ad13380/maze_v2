@@ -26,11 +26,12 @@ export const useInitialGrid = () => {
     finishNodeLoc,
     nodeDrag
   ) => ({
-    col,
-    row,
+    row: row,
+    col: col,
     isStart: row === startNodeLoc.row && col === startNodeLoc.col,
     isFinish: row === finishNodeLoc.row && col === finishNodeLoc.col,
     distance: Infinity,
+    comDistance: Infinity,
     type: "",
     previousNode: null,
     nodeDrag: nodeDrag,

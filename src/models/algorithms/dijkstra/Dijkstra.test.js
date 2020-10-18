@@ -1,6 +1,6 @@
 import { Dijkstra } from "./Dijkstra";
 import { expectedDijkstraResult, expectedPathResult } from "./dijkstraTestData";
-import { generateTestGrid } from "../../testHelpers";
+import { generateTestGrid } from "../../../testHelpers";
 
 describe("dijkstra", () => {
   describe("for a solvable maze", () => {

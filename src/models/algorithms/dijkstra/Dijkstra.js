@@ -20,8 +20,19 @@ export class Dijkstra {
       currentNode.type = "visited";
       visitedNodesInOrder.push(currentNode);
       if (currentNode === this.finishNode) return visitedNodesInOrder;
+
       this.updateUnvisitedNeighbours(currentNode);
     }
+  }
+
+  getShortestPath(finishNode) {
+    const shortestPathNodes = [];
+    let currentNode = finishNode;
+    while (currentNode !== null) {
+      shortestPathNodes.unshift(currentNode);
+      currentNode = currentNode.previousNode;
+    }
+    return shortestPathNodes;
   }
 
   getAllNodes() {
@@ -48,15 +59,5 @@ export class Dijkstra {
     if (col > 0) neighbours.push(this.grid[row][col - 1]);
     if (col < this.grid[0].length - 1) neighbours.push(this.grid[row][col + 1]);
     return neighbours.filter((neighbour) => neighbour.type !== "visited");
-  }
-
-  getShortestPath(finishNode) {
-    const shortestPathNodes = [];
-    let currentNode = finishNode;
-    while (currentNode !== null) {
-      shortestPathNodes.unshift(currentNode);
-      currentNode = currentNode.previousNode;
-    }
-    return shortestPathNodes;
   }
 }

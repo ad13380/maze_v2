@@ -4,7 +4,12 @@ import Button from "../components/Button/Button";
 import Error from "../components/Error/Error";
 import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
-import { Dijkstra } from "../models/algorithms/Dijkstra";
+import { Dijkstra } from "../models/algorithms/dijkstra/Dijkstra";
+
+//test
+import { AStarManhattan } from "../models/algorithms/aStar/AStarManhattan";
+//test
+
 import { MazeRecursive } from "../models/mazeGeneration/mazeRecursive";
 import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
 import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
