@@ -4,7 +4,10 @@ import Button from "../components/Button/Button";
 import Error from "../components/Error/Error";
 import Counter from "../components/Counter/Counter";
 import Title from "../components/Title/Title";
-import { dijkstra, shortestPath } from "../models/algorithms/dijkstra";
+import Selector from "../components/Selector/Selector";
+import { Dijkstra } from "../models/algorithms/dijkstra/Dijkstra";
+import { AStarEuclidean } from "../models/algorithms/aStarEuclidean/AStarEuclidean";
+import { AStarManhattan } from "../models/algorithms/aStarManhattan/AStarManhattan";
 import { MazeRecursive } from "../models/mazeGeneration/mazeRecursive";
 import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
 import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
@@ -28,6 +31,7 @@ const PathFindingVisualizer = () => {
   const [visitedNodesInOrder, setVisitedNodesInOrder] = useState([]);
   const [shortestPathNodesInOrder, setShortestPathNodesInOrder] = useState([]);
   const [mazeNodesInOrder, setMazeNodesInOrder] = useState([]);
+  const [currentAlgorithm, setCurrentAlgorithm] = useState("Dijkstra");
 
   const [getInitialGrid] = useInitialGrid();
   const [getNewStartFinish] = useNewStartFinish();
@@ -59,7 +63,6 @@ const PathFindingVisualizer = () => {
       nodeDrag
     );
     const asyncAnimate = async () => {
-      console.log("running");
       setIsAnimating(true);
       await animate(updatedGrid, mazeNodesInOrder, "wall", 20);
       setIsAnimating(false);
@@ -77,7 +80,9 @@ const PathFindingVisualizer = () => {
     }
 
     setIsSolvable(true);
-    const updatedGrid = _.cloneDeep(grid);
+    const updatedGrid = isPathClear
+      ? _.cloneDeep(grid)
+      : getClearVisitedNodes(grid);
     const asyncAnimate = async () => {
       setIsAnimating(true);
       setIsPathClear(false);
@@ -132,11 +137,19 @@ const PathFindingVisualizer = () => {
   };
 
   const handleRunAlgorithm = async () => {
-    const updatedGrid = _.cloneDeep(grid);
+    const updatedGrid = isPathClear
+      ? _.cloneDeep(grid)
+      : getClearVisitedNodes(grid);
     const startNode = updatedGrid[startNodeLoc.row][startNodeLoc.col];
     const finishNode = updatedGrid[finishNodeLoc.row][finishNodeLoc.col];
-    setVisitedNodesInOrder(dijkstra(updatedGrid, startNode, finishNode));
-    setShortestPathNodesInOrder(shortestPath(finishNode));
+    const algorithmClass = getCurrentAlgorithmClass(currentAlgorithm);
+    const algorithmInstance = new algorithmClass(
+      updatedGrid,
+      startNode,
+      finishNode
+    );
+    setVisitedNodesInOrder(algorithmInstance.getVisitedNodes());
+    setShortestPathNodesInOrder(algorithmInstance.getShortestPath(finishNode));
   };
 
   const handleClearScreen = () => {
@@ -155,6 +168,21 @@ const PathFindingVisualizer = () => {
     setIsPathClear(true);
     const updatedGrid = getClearVisitedNodes(grid, visitedNodesInOrder);
     setGrid(updatedGrid);
+  };
+
+  const handleChangeAlgorithm = (event) => {
+    setCurrentAlgorithm(event.target.text);
+  };
+
+  const getCurrentAlgorithmClass = (currentAlgorithm) => {
+    switch (currentAlgorithm) {
+      case "Dijkstra":
+        return Dijkstra;
+      case "A* Euclidean":
+        return AStarEuclidean;
+      case "A* Manhattan":
+        return AStarManhattan;
+    }
   };
 
   const startDraggingNode = (nodeType) => {
@@ -230,10 +258,15 @@ const PathFindingVisualizer = () => {
         Generate Maze
       </Button>
       <br />
+
+      <Selector handleChangeAlgorithm={handleChangeAlgorithm}>
+        {currentAlgorithm}
+      </Selector>
+
       <Button
         data-test="run-algo-button-component"
         handleOnClick={handleRunAlgorithm}
-        onDisable={!isPathClear || isAnimating}
+        onDisable={isAnimating}
       >
         Run Algorithm
       </Button>

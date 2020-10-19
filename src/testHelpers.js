@@ -1,4 +1,5 @@
 export const generateGrid = (nodeType) => {
+  // generate 3 x 3 grid
   return new Array(3).fill("").map(() =>
     new Array(3).fill("").map(() => ({
       type: nodeType,
@@ -19,16 +20,16 @@ export const getNodeTypeTotal = (grid, nodeType) => {
   return counter;
 };
 
-export const generateTestGrid = () => {
-  // generate 10 x 10 grid
+export const generateTestGrid = (type = "") => {
+  // generate 6 x 6 grid
   return new Array(6).fill("").map((val, row) =>
     new Array(6).fill("").map((val, col) => ({
-      row,
-      col,
+      row: row,
+      col: col,
       isStart: false,
       isFinish: false,
       distance: Infinity,
-      type: "",
+      type: type,
       previousNode: null,
     }))
   );

@@ -1,0 +1,14 @@
+.selector-styling {
+  display: inline-block;
+}
+
+.link-styling {
+  height: 40px;
+  margin: 0 3px 12px 3px;
+  font-size: 1.2em;
+}
+
+.link-styling:hover {
+  text-decoration: none;
+  color: grey;
+}
