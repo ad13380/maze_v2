@@ -17,13 +17,28 @@ const Selector = (props) => {
         {children}
       </button>
       <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a className="dropdown-item" href="#/" onClick={handleChangeAlgorithm}>
+        <a
+          className="dropdown-item"
+          href="#/"
+          onClick={handleChangeAlgorithm}
+          data-test="dijkstra-selector-component"
+        >
           Dijkstra
         </a>
-        <a className="dropdown-item" href="#/" onClick={handleChangeAlgorithm}>
+        <a
+          className="dropdown-item"
+          href="#/"
+          onClick={handleChangeAlgorithm}
+          data-test="aStarMan-selector-component"
+        >
           A* Manhattan
         </a>
-        <a className="dropdown-item" href="#/" onClick={handleChangeAlgorithm}>
+        <a
+          className="dropdown-item"
+          href="#/"
+          onClick={handleChangeAlgorithm}
+          data-test="aStarEuc-selector-component"
+        >
           A* Euclidean
         </a>
       </div>

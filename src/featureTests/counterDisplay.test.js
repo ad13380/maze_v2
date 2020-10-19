@@ -7,15 +7,12 @@ describe("for a solvable maze", () => {
   const runAlgoButton = wrapper.find('[data-test="run-algo-button-component"]');
 
   it("renders the total visited and path nodes", () => {
-    // draw a maze
-    wrapper.find("#node-9-11").simulate("mouseDown");
-    wrapper.find("#node-9-12").simulate("mouseDown");
-    wrapper.find("#node-9-13").simulate("mouseDown");
-    wrapper.find("#node-10-11").simulate("mouseDown");
-    wrapper.find("#node-10-13").simulate("mouseDown");
-    wrapper.find("#node-11-11").simulate("mouseDown");
+    // move start and finish closer together
+    wrapper.find("#node-10-12").simulate("mouseDown");
+    wrapper.find("#node-10-24").simulate("mouseEnter");
+    wrapper.find("#node-10-24").simulate("mouseUp");
 
     runAlgoButton.simulate("click");
-    expect(wrapper.find(".counter-numbers").text()).toContain("443 19");
+    expect(wrapper.find(".counter-numbers").text()).toContain("37 5");
   });
 });
