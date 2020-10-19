@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./PathFindingVisualizer.css";
 import Grid from "../components/Grid/Grid";
 import Button from "../components/Button/Button";
 import Error from "../components/Error/Error";
@@ -236,42 +237,46 @@ const PathFindingVisualizer = () => {
       ) : (
         <Error data-test="error-component" />
       )}
-      <Button
-        data-test="clear-screen-button-component"
-        handleOnClick={handleClearScreen}
-        onDisable={isAnimating}
-      >
-        Clear Screen
-      </Button>
-      <Button
-        data-test="clear-path-button-component"
-        handleOnClick={handleClearVisited}
-        onDisable={isAnimating}
-      >
-        Clear Path
-      </Button>
-      <Button
-        data-test="generate-maze-button-component"
-        handleOnClick={handleGenerateMaze}
-        onDisable={isAnimating}
-      >
-        Generate Maze
-      </Button>
-      <br />
+      <div className="console-wrapper">
+        <div>
+          <Selector handleChangeAlgorithm={handleChangeAlgorithm}>
+            {currentAlgorithm}
+          </Selector>
 
-      <Selector handleChangeAlgorithm={handleChangeAlgorithm}>
-        {currentAlgorithm}
-      </Selector>
-
-      <Button
-        data-test="run-algo-button-component"
-        handleOnClick={handleRunAlgorithm}
-        onDisable={isAnimating}
-      >
-        Run Algorithm
-      </Button>
-
-      <br />
+          <Button
+            data-test="run-algo-button-component"
+            handleOnClick={handleRunAlgorithm}
+            onDisable={isAnimating}
+            styling={"btn-primary"}
+          >
+            Run Algorithm
+          </Button>
+          <Button
+            data-test="generate-maze-button-component"
+            handleOnClick={handleGenerateMaze}
+            onDisable={isAnimating}
+            styling={"btn-outline-primary"}
+          >
+            Generate Maze
+          </Button>
+        </div>
+        <div>
+          <Button
+            data-test="clear-path-button-component"
+            handleOnClick={handleClearVisited}
+            onDisable={isAnimating}
+          >
+            Clear Path
+          </Button>
+          <Button
+            data-test="clear-screen-button-component"
+            handleOnClick={handleClearScreen}
+            onDisable={isAnimating}
+          >
+            Clear Screen
+          </Button>
+        </div>
+      </div>
       <Grid
         data-test="grid-component"
         grid={grid}
