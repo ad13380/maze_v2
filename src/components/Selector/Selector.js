@@ -21,10 +21,10 @@ const Selector = (props) => {
           Dijkstra
         </a>
         <a className="dropdown-item" href="#" onClick={handleChangeAlgorithm}>
-          A* Euclidean
+          A* Manhattan
         </a>
         <a className="dropdown-item" href="#" onClick={handleChangeAlgorithm}>
-          A* Manhattan
+          A* Euclidean
         </a>
       </div>
     </div>

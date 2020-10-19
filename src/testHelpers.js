@@ -20,16 +20,16 @@ export const getNodeTypeTotal = (grid, nodeType) => {
   return counter;
 };
 
-export const generateTestGrid = () => {
+export const generateTestGrid = (type = "") => {
   // generate 6 x 6 grid
   return new Array(6).fill("").map((val, row) =>
     new Array(6).fill("").map((val, col) => ({
-      row,
-      col,
+      row: row,
+      col: col,
       isStart: false,
       isFinish: false,
       distance: Infinity,
-      type: "",
+      type: type,
       previousNode: null,
     }))
   );

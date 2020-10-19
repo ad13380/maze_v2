@@ -80,7 +80,9 @@ const PathFindingVisualizer = () => {
     }
 
     setIsSolvable(true);
-    const updatedGrid = _.cloneDeep(grid);
+    const updatedGrid = isPathClear
+      ? _.cloneDeep(grid)
+      : getClearVisitedNodes(grid);
     const asyncAnimate = async () => {
       setIsAnimating(true);
       setIsPathClear(false);
@@ -135,7 +137,9 @@ const PathFindingVisualizer = () => {
   };
 
   const handleRunAlgorithm = async () => {
-    const updatedGrid = _.cloneDeep(grid);
+    const updatedGrid = isPathClear
+      ? _.cloneDeep(grid)
+      : getClearVisitedNodes(grid);
     const startNode = updatedGrid[startNodeLoc.row][startNodeLoc.col];
     const finishNode = updatedGrid[finishNodeLoc.row][finishNodeLoc.col];
     const algorithmClass = getCurrentAlgorithmClass(currentAlgorithm);
@@ -262,7 +266,7 @@ const PathFindingVisualizer = () => {
       <Button
         data-test="run-algo-button-component"
         handleOnClick={handleRunAlgorithm}
-        onDisable={!isPathClear || isAnimating}
+        onDisable={isAnimating}
       >
         Run Algorithm
       </Button>
