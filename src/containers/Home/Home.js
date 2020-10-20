@@ -5,11 +5,11 @@ const Home = () => {
   return (
     <>
       <Link to="/visualise">
-        <button>Visualise</button>
+        <button data-test="visualise-page-button">Visualise</button>
       </Link>
       <br />
       <Link to="/tutorial">
-        <button>How To Use</button>
+        <button data-test="tutorial-page-button">How To Use</button>
       </Link>
       <br />
       <a href="https://github.com/ad13380/">Github: Anthony Donovan</a>

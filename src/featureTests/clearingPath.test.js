@@ -1,4 +1,5 @@
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import { wait } from "@testing-library/react";
 import App from "../App";
@@ -11,7 +12,11 @@ describe("when clicking clear path button", () => {
   let clearPathButton;
 
   beforeEach(() => {
-    wrapper = mount(<App />);
+    wrapper = mount(
+      <MemoryRouter initialEntries={["/visualise"]}>
+        <App />
+      </MemoryRouter>
+    );
     runAlgoButton = wrapper.find('[data-test="run-algo-button-component"]');
     clearPathButton = wrapper.find('[data-test="clear-path-button-component"]');
   });

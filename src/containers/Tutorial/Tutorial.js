@@ -1,15 +1,19 @@
 import React from "react";
+import "./Tutorial.css";
 import { Link } from "react-router-dom";
+import Carousel from "../../components/Carousel/Carousel";
+import Button from "../../components/Button/Button";
 
 const Tutorial = () => {
   return (
-    <>
+    <div class="tutorial-wrapper">
+      <Carousel />
       <Link to="/">
-        <button>Home</button>
+        <Button data-test="home-button-component" onDisable={false}>
+          ← Home
+        </Button>
       </Link>
-      <br />
-      How to Use
-    </>
+    </div>
   );
 };
 

@@ -45,7 +45,7 @@ const Selector = (props) => {
           className="dropdown-item"
           href="#/"
           onClick={handleChangeAlgorithm}
-          data-test="aStarEuc-selector-component"
+          data-test="bfs-selector-component"
         >
           Breadth-First Search
         </a>
@@ -53,7 +53,7 @@ const Selector = (props) => {
           className="dropdown-item"
           href="#/"
           onClick={handleChangeAlgorithm}
-          data-test="aStarEuc-selector-component"
+          data-test="dfs-selector-component"
         >
           Depth-First Search
         </a>

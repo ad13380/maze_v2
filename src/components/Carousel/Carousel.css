@@ -1,0 +1,22 @@
+.carousel-component {
+  /* border: 1px solid black; */
+  width: 60em;
+  height: 40em;
+  margin-bottom: 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(100%);
+}
+
+img {
+  margin: auto;
+}
+
+p {
+  /* background-color: red; */
+  width: 80%;
+  margin: auto;
+  padding: 10px 0 10px 0;
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import { wait } from "@testing-library/react";
 import App from "../App";
@@ -13,7 +14,11 @@ describe("when clicking generate maze button", () => {
   let clearPathButton;
 
   beforeEach(() => {
-    wrapper = mount(<App />);
+    wrapper = mount(
+      <MemoryRouter initialEntries={["/visualise"]}>
+        <App />
+      </MemoryRouter>
+    );
     generateMazeButton = wrapper.find(
       '[data-test="generate-maze-button-component"]'
     );

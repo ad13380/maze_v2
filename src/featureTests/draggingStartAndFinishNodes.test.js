@@ -1,4 +1,5 @@
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import App from "../App";
 
@@ -6,7 +7,11 @@ describe("dragging a node", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(<App />);
+    wrapper = mount(
+      <MemoryRouter initialEntries={["/visualise"]}>
+        <App />
+      </MemoryRouter>
+    );
   });
 
   it("allows you to drag the start node to a new location", () => {

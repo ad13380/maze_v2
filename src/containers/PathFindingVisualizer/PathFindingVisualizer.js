@@ -291,11 +291,7 @@ const PathFindingVisualizer = () => {
       />
       <br />
       <Link to="/">
-        <Button
-          data-test="clear-path-button-component"
-          handleOnClick={handleClearVisited}
-          onDisable={false}
-        >
+        <Button data-test="home-button-component" onDisable={false}>
           ← Home
         </Button>
       </Link>
