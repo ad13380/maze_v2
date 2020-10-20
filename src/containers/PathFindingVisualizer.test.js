@@ -9,38 +9,33 @@ describe("<PathFindingVisualizer />", () => {
     wrapper = shallow(<PathFindingVisualizer />);
   });
 
-  it("redners the page title", () => {
-    const titleComponent = wrapper.find("[data-test='title-component']");
-    expect(titleComponent).toHaveLength(1);
-  });
-
-  it("redners the counter", () => {
+  it("renders the counter", () => {
     const counter = wrapper.find("[data-test='counter-component']");
     expect(counter).toHaveLength(1);
   });
 
-  it("redners the clear screen button", () => {
+  it("renders the clear screen button", () => {
     const clearScreenButton = wrapper.find(
       "[data-test='clear-screen-button-component']"
     );
     expect(clearScreenButton).toHaveLength(1);
   });
 
-  it("redners the clear path button", () => {
+  it("renders the clear path button", () => {
     const clearPathButton = wrapper.find(
       "[data-test='clear-path-button-component']"
     );
     expect(clearPathButton).toHaveLength(1);
   });
 
-  it("redners the run algo button", () => {
+  it("renders the run algo button", () => {
     const runAlgoButton = wrapper.find(
       "[data-test='run-algo-button-component']"
     );
     expect(runAlgoButton).toHaveLength(1);
   });
 
-  it("redners the grid", () => {
+  it("renders the grid", () => {
     const grid = wrapper.find("[data-test='grid-component']");
     expect(grid).toHaveLength(1);
   });

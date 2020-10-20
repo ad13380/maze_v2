@@ -226,7 +226,6 @@ const PathFindingVisualizer = () => {
 
   return (
     <>
-      <Title data-test="title-component" />
       {isSolvable ? (
         <Counter
           data-test="counter-component"
