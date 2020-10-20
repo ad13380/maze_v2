@@ -41,6 +41,22 @@ const Selector = (props) => {
         >
           A* Euclidean
         </a>
+        <a
+          className="dropdown-item"
+          href="#/"
+          onClick={handleChangeAlgorithm}
+          data-test="aStarEuc-selector-component"
+        >
+          Breadth-First Search
+        </a>
+        <a
+          className="dropdown-item"
+          href="#/"
+          onClick={handleChangeAlgorithm}
+          data-test="aStarEuc-selector-component"
+        >
+          Depth-First Search
+        </a>
       </div>
     </div>
   );

@@ -9,6 +9,8 @@ import Selector from "../../components/Selector/Selector";
 import { Dijkstra } from "../../models/algorithms/dijkstra/Dijkstra";
 import { AStarEuclidean } from "../../models/algorithms/aStarEuclidean/AStarEuclidean";
 import { AStarManhattan } from "../../models/algorithms/aStarManhattan/AStarManhattan";
+import { BreadthFirstSearch } from "../../models/algorithms/breadthFirstSearch/BreadthFirstSearch";
+import { DepthFirstSearch } from "../../models/algorithms/depthFirstSearch/DepthFirstSearch";
 import { MazeRecursive } from "../../models/mazeGeneration/mazeRecursive";
 import { useInitialGrid } from "../../hooks/useInitialGrid/useInitialGrid";
 import { useNewStartFinish } from "../../hooks/useNewStartFinish/useNewStartFinish";
@@ -183,6 +185,10 @@ const PathFindingVisualizer = () => {
         return AStarEuclidean;
       case "A* Manhattan":
         return AStarManhattan;
+      case "Breadth-First Search":
+        return BreadthFirstSearch;
+      case "Depth-First Search":
+        return DepthFirstSearch;
     }
   };
 
@@ -288,7 +294,7 @@ const PathFindingVisualizer = () => {
         <Button
           data-test="clear-path-button-component"
           handleOnClick={handleClearVisited}
-          onDisable={isAnimating}
+          onDisable={false}
         >
           ← Home
         </Button>
