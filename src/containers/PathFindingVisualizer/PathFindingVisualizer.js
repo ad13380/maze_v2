@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./PathFindingVisualizer.css";
-import Grid from "../components/Grid/Grid";
-import Button from "../components/Button/Button";
-import Error from "../components/Error/Error";
-import Counter from "../components/Counter/Counter";
-import Title from "../components/Title/Title";
-import Selector from "../components/Selector/Selector";
-import { Dijkstra } from "../models/algorithms/dijkstra/Dijkstra";
-import { AStarEuclidean } from "../models/algorithms/aStarEuclidean/AStarEuclidean";
-import { AStarManhattan } from "../models/algorithms/aStarManhattan/AStarManhattan";
-import { MazeRecursive } from "../models/mazeGeneration/mazeRecursive";
-import { useInitialGrid } from "../hooks/useInitialGrid/useInitialGrid";
-import { useNewStartFinish } from "../hooks/useNewStartFinish/useNewStartFinish";
-import { useClearVisitedNodes } from "../hooks/useClearVisitedNodes/useClearVisitedNodes";
-import { useSetWallNode } from "../hooks/useSetWallNode/useSetWallNode";
-import { useSetDragNode } from "../hooks/useSetDragNode/useSetDragNode";
+import Grid from "../../components/Grid/Grid";
+import Button from "../../components/Button/Button";
+import Error from "../../components/Error/Error";
+import Counter from "../../components/Counter/Counter";
+import Selector from "../../components/Selector/Selector";
+import { Dijkstra } from "../../models/algorithms/dijkstra/Dijkstra";
+import { AStarEuclidean } from "../../models/algorithms/aStarEuclidean/AStarEuclidean";
+import { AStarManhattan } from "../../models/algorithms/aStarManhattan/AStarManhattan";
+import { MazeRecursive } from "../../models/mazeGeneration/mazeRecursive";
+import { useInitialGrid } from "../../hooks/useInitialGrid/useInitialGrid";
+import { useNewStartFinish } from "../../hooks/useNewStartFinish/useNewStartFinish";
+import { useClearVisitedNodes } from "../../hooks/useClearVisitedNodes/useClearVisitedNodes";
+import { useSetWallNode } from "../../hooks/useSetWallNode/useSetWallNode";
+import { useSetDragNode } from "../../hooks/useSetDragNode/useSetDragNode";
 var _ = require("lodash");
 
 const GRID_ROWS = 21;
@@ -283,6 +283,16 @@ const PathFindingVisualizer = () => {
         handleMouseEnter={handleMouseEnter}
         handleMouseUp={handleMouseUp}
       />
+      <br />
+      <Link to="/">
+        <Button
+          data-test="clear-path-button-component"
+          handleOnClick={handleClearVisited}
+          onDisable={isAnimating}
+        >
+          ← Home
+        </Button>
+      </Link>
     </>
   );
 };
