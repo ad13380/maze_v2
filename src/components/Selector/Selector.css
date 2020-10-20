@@ -12,3 +12,7 @@
   text-decoration: none;
   color: grey;
 }
+
+.link-styling:focus {
+  text-decoration: none;
+}
