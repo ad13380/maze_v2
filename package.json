@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --watchAll=false",
+    "test": "react-scripts test --coverage --watchAll=false --silent",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -42,9 +42,7 @@
       "src/index.js",
       "src/serviceWorker.js",
       "src/testHelpers.js",
-      "src/reducers/nodeClassReducer.js",
-      "src/models/algorithms/dijkstraTestData.js",
-      "src/models/mazeGeneration/mazeRecursiveTestData.js"
+      "src/reducers/nodeClassReducer.js"
     ]
   }
 }
