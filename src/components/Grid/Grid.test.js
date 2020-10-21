@@ -7,7 +7,7 @@ describe("<Grid  />", () => {
   let gridComponent;
   let nodeComponent;
   const initalProps = {
-    grid: new Array(40).fill("").map(() => new Array(20).fill("")),
+    grid: new Array(41).fill("").map(() => new Array(21).fill("")),
   };
 
   beforeEach(() => {
@@ -21,6 +21,6 @@ describe("<Grid  />", () => {
   });
 
   it("displays a 40 by 20 grid of nodes", () => {
-    expect(nodeComponent).toHaveLength(800);
+    expect(nodeComponent).toHaveLength(861);
   });
 });

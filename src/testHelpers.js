@@ -1,15 +1,3 @@
-export const generateGrid = (nodeType) => {
-  // generate 3 x 3 grid
-  return new Array(3).fill("").map(() =>
-    new Array(3).fill("").map(() => ({
-      type: nodeType,
-      isStart: false,
-      isFinish: false,
-      nodeDrag: {},
-    }))
-  );
-};
-
 export const getNodeTypeTotal = (grid, nodeType) => {
   let counter = 0;
   grid.forEach((row) => {

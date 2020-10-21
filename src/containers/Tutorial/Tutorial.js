@@ -7,7 +7,7 @@ import Button from "../../components/Button/Button";
 const Tutorial = () => {
   return (
     <div class="tutorial-wrapper">
-      <Carousel />
+      <Carousel data-test="carousel-component" />
       <Link to="/">
         <Button data-test="home-button-component" onDisable={false}>
           ← Home

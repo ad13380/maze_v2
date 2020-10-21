@@ -1,8 +1,8 @@
 import { useSetDragNode } from "./useSetDragNode";
-import { generateGrid } from "../../testHelpers";
+import { generateTestGrid } from "../../testHelpers";
 
 describe("useSetDragNode", () => {
-  let grid = generateGrid("");
+  let grid = generateTestGrid("");
   let updatedGrid;
   const updatedNodeDrag = {
     isDragging: true,

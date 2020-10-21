@@ -5,12 +5,13 @@ const Carousel = () => {
   return (
     <div
       id="carouselExampleControls"
-      class="carousel slide carousel-component"
+      className="carousel slide carousel-component"
       data-ride="carousel"
       data-interval="7000"
+      data-test="carousel-component"
     >
-      <div class="carousel-inner">
-        <div class="carousel-item active">
+      <div className="carousel-inner">
+        <div className="carousel-item active">
           <h4>What Is a Pathfinding Algorithm?</h4>
           <p>
             At its core, a pathfinding algorithm seeks to find the shortest path
@@ -25,13 +26,13 @@ const Carousel = () => {
             through a maze wall is Infinity.
           </p>
           <img
-            class="d-block"
+            className="d-block"
             width="350px"
             src="images/tutorialImages/pathfinding.png"
             alt="maze theory"
           />
         </div>
-        <div class="carousel-item">
+        <div className="carousel-item">
           <h4>The Algorithms</h4>
           <br />
           <h5>Dijkstra</h5>
@@ -55,15 +56,15 @@ const Carousel = () => {
             A variant of the A* algorithm that uses a Manhattan heuristic. In
             this case, the distance from current node to finish node is taken as
             the sum of the vertical and horizontal distances from within the
-            grid (much like how a taxi cab in manhattan calculates distances
+            grid (much like how a taxi cab in manhattan estimates distances
             between city blocks).
           </p>
           <h5>Breadth First Search</h5>
           <p>
             Traverses the graph in a breadthward motion whereby it first
-            explores its neighbouring nodes (nodes which are directly connected
-            to the source node), and then moves continuously outward to explore
-            the next level of neighbouring nodes.
+            explores its neighbouring nodes (nodes which it is directly
+            connected to), and then moves continuously outward to explore the
+            next level of surrounding neighbouring nodes.
           </p>
           <h5>Depth First Search</h5>
           <p>
@@ -73,21 +74,21 @@ const Carousel = () => {
             finish node.
           </p>
         </div>
-        <div class="carousel-item">
+        <div className="carousel-item">
           <h4>Drawing a Maze</h4>
           <p>
             To draw a maze wall, simply click and drag your cursor across the
             grid. Click on an existing wall node to remove it.
           </p>
           <img
-            class="d-block"
+            className="d-block"
             width="500px"
             src="images/tutorialImages/drawingMaze.gif"
             alt="drawing a maze"
           />
         </div>
 
-        <div class="carousel-item">
+        <div className="carousel-item">
           <h4>Generating a Maze</h4>
           <p>
             You can also generate a random complex maze by clicking on the
@@ -95,13 +96,13 @@ const Carousel = () => {
             Recursive Division algorithm with a vertical skew.
           </p>
           <img
-            class="d-block"
+            className="d-block"
             width="600px"
             src="images/tutorialImages/automaticMaze.gif"
             alt="generating a maze"
           />
         </div>
-        <div class="carousel-item">
+        <div className="carousel-item">
           <h4>Selecting an Algorithm</h4>
           <p>
             Click the Run Algorithm button to visualise how the pathfinding
@@ -110,13 +111,13 @@ const Carousel = () => {
             selecting an algorithm from the dropdown menu.
           </p>
           <img
-            class="d-block"
+            className="d-block"
             width="500px"
             src="images/tutorialImages/selectAlgo.png"
             alt="selecting algorithm"
           />
         </div>
-        <div class="carousel-item">
+        <div className="carousel-item">
           <h4>Changing the Start and Finish Nodes</h4>
           <p>
             Drag and drop the start and finishing nodes to different locations
@@ -124,13 +125,13 @@ const Carousel = () => {
             which point it is searching for.
           </p>
           <img
-            class="d-block"
+            className="d-block"
             width="500px"
             src="images/tutorialImages/drag.gif"
             alt="drag and drop start and finish nodes"
           />
         </div>
-        <div class="carousel-item">
+        <div className="carousel-item">
           <h4>Clearing the Path and the Screen</h4>
           <p>
             You can clear the "Path" and "Visited" nodes that are generated
@@ -139,13 +140,13 @@ const Carousel = () => {
             Screen button.
           </p>
           <img
-            class="d-block"
+            className="d-block"
             width="500px"
             src="images/tutorialImages/clear.gif"
             alt="clearing path and screen"
           />
         </div>
-        <div class="carousel-item">
+        <div className="carousel-item">
           <h4>An Unsolvable Maze</h4>
           <p>
             In the case that a maze is unsolvable, an error message will appear
@@ -155,13 +156,13 @@ const Carousel = () => {
             scratch.
           </p>
           <img
-            class="d-block"
+            className="d-block"
             width="500px"
             src="images/tutorialImages/unsolvable.gif"
             alt="unsolvable maze"
           />
         </div>
-        <div class="carousel-item">
+        <div className="carousel-item">
           <h4>Enjoy!</h4>
           <br />
           <h5>
@@ -183,22 +184,22 @@ const Carousel = () => {
         </div>
       </div>
       <a
-        class="carousel-control-prev dark"
+        className="carousel-control-prev"
         href="#carouselExampleControls"
         role="button"
         data-slide="prev"
       >
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span className="sr-only">Previous</span>
       </a>
       <a
-        class="carousel-control-next"
+        className="carousel-control-next"
         href="#carouselExampleControls"
         role="button"
         data-slide="next"
       >
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+        <span className="sr-only">Next</span>
       </a>
     </div>
   );

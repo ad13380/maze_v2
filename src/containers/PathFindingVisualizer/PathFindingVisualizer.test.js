@@ -35,6 +35,11 @@ describe("<PathFindingVisualizer />", () => {
     expect(runAlgoButton).toHaveLength(1);
   });
 
+  it("renders the home button", () => {
+    const homeButton = wrapper.find("[data-test='home-button-component']");
+    expect(homeButton).toHaveLength(1);
+  });
+
   it("renders the grid", () => {
     const grid = wrapper.find("[data-test='grid-component']");
     expect(grid).toHaveLength(1);
