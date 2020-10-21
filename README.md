@@ -12,11 +12,43 @@ This app has been deployed on Netlify, you can view it [here](https://maze-pathf
 
 A personal project, the goal of which was to create a front-end application that would allow users to draw a maze on the screen, drag-and-drop the start and finish points, and then run a pathfinding algorithm to visually see how it methodically searches through the maze and determines the shortest path from start to finish (if one exists).
 
-My motivation for creating this project was firstly to aid in my understanding of pathfinding algorithms. Though I was able to grasp it conceptually, I also like to see how concepts can be applied practically. Given their popularity in route planning for navigation apps, I decided a pathfinding feature within a maze drawing app would be a suitable application. This program uses _Dijkstra's algorithm_ to solve the maze. Future iterations will also include _A\*_ and _Greedy Breadth First Search_ algorithms.
+My motivation for creating this project was firstly to aid in my understanding of pathfinding algorithms. Though I was able to grasp it conceptually, I also like to see how concepts can be applied practically. Given their popularity in route planning for navigation apps, I decided a pathfinding feature within a maze drawing app would be a suitable application.
 
 Additionally, I also used this opportunity to further cement my understanding of React; in particular the use of animations and asynchronous operations. Though I did find this aspect particularly challenging to write, I find the best way to learn a new concept is to take my existing knowledge and push the boundaries of what I can create with it. After writing my millionth "React Counter App", I figured it was time to create something a little less conventional.
 
-## Features
+## Features version 2
+
+### Additional Features
+
+```
+As a user
+So that I can compare the behaviour of different algorithms
+I would like the option to choose from several different algorithms when running an animation
+
+As a user
+To save time between running successive animations
+I would like the process of running an animation to automatically clear the grid of existing visited and path nodes
+```
+
+<img src="./public/images/multi-algo.gif">
+
+```
+As a user
+To make it easier to visualize an algorithm running in a complex maze
+I would like the option to automatically generate a random complex maze
+```
+
+<img src="./public/images/generate-maze.gif">
+
+```
+As a user
+To get a better context on how to use this app
+I would like to see a tutorial page that highlights this app’s key features
+```
+
+<img src="./public/images/tutorial.gif">
+
+## Features version 1
 
 ### Setting Up
 
@@ -118,7 +150,7 @@ I would like the notice message to provide some helpful hints on how to fix my m
 | Libraries            | React                   |
 | Languages            | Javascript, HTML5, CSS3 |
 | Styling              | CSS, Bootstrap          |
-| CI/CD                | Travis                  |
+| CI/CD                | Travis, Code Climate    |
 | Hosting              | Netflify                |
 | Testing and Coverage | Jest, Enzyme            |
 
@@ -150,8 +182,4 @@ the application will be live on https://localhost:3000 by default.
 
 This project is still a work in progress, additional features I plan to add include:
 
-- Adding more pathfinding algorithms including:
-  - A\*
-  - Greedy Breadth First Search
-- The ability to auto generate a maze using recursive backtracking
 - Adding "weighted" nodes that the algorithm could search through but would try to avoid
