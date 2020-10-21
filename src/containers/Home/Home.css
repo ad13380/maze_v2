@@ -10,7 +10,11 @@ h3 {
 }
 
 #github-link {
-  margin-top: 1em;
+  margin-top: 7em;
+}
+
+#github-link:hover {
+  color: rgb(44, 89, 236);
 }
 
 .neomorphic {

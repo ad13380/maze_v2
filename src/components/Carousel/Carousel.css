@@ -1,8 +1,7 @@
 .carousel-component {
-  /* border: 1px solid black; */
-  width: 60em;
-  height: 40em;
-  margin-bottom: 20px;
+  width: 70em;
+  height: 36em;
+  margin-bottom: 10px;
 }
 
 .carousel-control-prev-icon,
@@ -14,8 +13,13 @@ img {
   margin: auto;
 }
 
+h5 {
+  font-size: 1.1em;
+  font-style: italic;
+  margin: 0px;
+}
+
 p {
-  /* background-color: red; */
   width: 80%;
   margin: auto;
   padding: 10px 0 10px 0;
