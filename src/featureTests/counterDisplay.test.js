@@ -1,9 +1,14 @@
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import App from "../App";
 
 describe("for a solvable maze", () => {
-  const wrapper = mount(<App />);
+  const wrapper = mount(
+    <MemoryRouter initialEntries={["/visualise"]}>
+      <App />
+    </MemoryRouter>
+  );
   const runAlgoButton = wrapper.find('[data-test="run-algo-button-component"]');
 
   it("renders the total visited and path nodes", () => {

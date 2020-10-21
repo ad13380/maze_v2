@@ -1,5 +1,5 @@
 import { useNewStartFinish } from "./useNewStartFinish";
-import { generateGrid } from "../../testHelpers";
+import { generateTestGrid } from "../../testHelpers";
 
 describe("useNewStartFinish", () => {
   const [getNewStartFinish] = useNewStartFinish();
@@ -9,7 +9,7 @@ describe("useNewStartFinish", () => {
   const newNodeLoc = { newRow: 2, newCol: 2 };
 
   beforeEach(() => {
-    grid = generateGrid("visited");
+    grid = generateTestGrid("visited");
   });
 
   describe("for old node location", () => {

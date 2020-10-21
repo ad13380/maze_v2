@@ -8,7 +8,7 @@ describe("<Title />", () => {
 
   beforeEach(() => {
     wrapper = shallow(<Title />);
-    titleComponent = wrapper.find("div");
+    titleComponent = wrapper.find("a");
   });
 
   it("renders without error", () => {

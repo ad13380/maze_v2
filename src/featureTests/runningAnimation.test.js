@@ -1,4 +1,5 @@
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import { wait } from "@testing-library/react";
 import App from "../App";
@@ -13,7 +14,11 @@ describe("when animating", () => {
   let selectAStarEucButton;
 
   beforeEach(() => {
-    wrapper = mount(<App />);
+    wrapper = mount(
+      <MemoryRouter initialEntries={["/visualise"]}>
+        <App />
+      </MemoryRouter>
+    );
     runAlgoButton = wrapper.find('[data-test="run-algo-button-component"]');
     selectDijkstraButton = wrapper.find(
       '[data-test="dijkstra-selector-component"]'

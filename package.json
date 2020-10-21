@@ -9,12 +9,13 @@
     "lodash": "^4.17.20",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --coverage --watchAll=false",
+    "test": "react-scripts test --coverage --watchAll=false --silent",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -41,9 +42,7 @@
       "src/index.js",
       "src/serviceWorker.js",
       "src/testHelpers.js",
-      "src/reducers/nodeClassReducer.js",
-      "src/models/algorithms/dijkstraTestData.js",
-      "src/models/mazeGeneration/mazeRecursiveTestData.js"
+      "src/reducers/nodeClassReducer.js"
     ]
   }
 }

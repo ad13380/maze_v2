@@ -1,4 +1,5 @@
 import React from "react";
+import { MemoryRouter } from "react-router-dom";
 import { mount } from "enzyme";
 import App from "../App";
 
@@ -6,7 +7,11 @@ describe("for drawing a maze wall", () => {
   let wrapper;
 
   beforeEach(() => {
-    wrapper = mount(<App />);
+    wrapper = mount(
+      <MemoryRouter initialEntries={["/visualise"]}>
+        <App />
+      </MemoryRouter>
+    );
   });
 
   it("allows you to remove an existing maze wall node", () => {

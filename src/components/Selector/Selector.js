@@ -5,7 +5,7 @@ const Selector = (props) => {
   const { children, handleChangeAlgorithm } = props;
 
   return (
-    <div className="dropdown selector-styling">
+    <div className="dropdown selector-styling" data-test="selector-component">
       <button
         className="btn btn-link dropdown-toggle link-styling"
         type="button"
@@ -40,6 +40,22 @@ const Selector = (props) => {
           data-test="aStarEuc-selector-component"
         >
           A* Euclidean
+        </a>
+        <a
+          className="dropdown-item"
+          href="#/"
+          onClick={handleChangeAlgorithm}
+          data-test="bfs-selector-component"
+        >
+          Breadth-First Search
+        </a>
+        <a
+          className="dropdown-item"
+          href="#/"
+          onClick={handleChangeAlgorithm}
+          data-test="dfs-selector-component"
+        >
+          Depth-First Search
         </a>
       </div>
     </div>
