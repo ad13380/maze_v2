@@ -166,7 +166,7 @@ const Carousel = () => {
           <h4>Enjoy!</h4>
           <br />
           <h5>
-            I hope you have as much fun playing around with this visualization
+            I hope you have as much fun playing around with this visualisation
             tool as I had building it.
           </h5>
           <p>
